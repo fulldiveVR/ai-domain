@@ -17,8 +17,8 @@ message Article {
 message ArticleMetadata {
   int32 tokens_spend = 1;
   string openai_context_id = 2;
-  IOriginalArticleMetadata origin = 3;
-  ISourceMetadata source = 4;
+  OriginalArticleMetadata origin = 3;
+  SourceMetadata source = 4;
 }
 
 enum ApprovalStatus {
@@ -27,12 +27,12 @@ enum ApprovalStatus {
   Pending = 2;
 }
 
-message IOriginalArticleMetadata {
+message OriginalArticleMetadata {
   string url = 1;
   string pub_date = 2;
 }
 
-message ISourceMetadata {
+message SourceMetadata {
   string url = 1;
   string title = 2;
 }
