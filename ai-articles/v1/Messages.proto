@@ -4,8 +4,9 @@ import "Article.proto";
 package ai_wayz;
 
 message ArticleFoundMessage {
-  Article article = 1;
-  string category = 2;
+  OriginalArticleMetadata origin = 1;
+  SourceMetadata source = 2;
+  repeated AiRewriterMetadata ai_rewriter_metadata = 3;
 }
 
 
