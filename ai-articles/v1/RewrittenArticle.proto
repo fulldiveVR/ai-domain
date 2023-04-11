@@ -1,0 +1,38 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+package ai_wayz;
+
+message Article {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  string category = 4;
+  google.protobuf.Timestamp created = 6;
+  google.protobuf.Timestamp updated = 5;
+  ApprovalStatus approval_status = 7;
+  ArticleMetadata metadata = 8;
+}
+
+message ArticleMetadata {
+  int32 tokens_spend = 1;
+  string openai_context_id = 2;
+  IOriginalArticleMetadata origin = 3;
+  ISourceMetadata source = 4;
+}
+
+enum ApprovalStatus {
+  Approved = 0;
+  Rejected = 1;
+  Pending = 2;
+}
+
+message IOriginalArticleMetadata {
+  string url = 1;
+  string pub_date = 2;
+}
+
+message ISourceMetadata {
+  string url = 1;
+  string title = 2;
+}

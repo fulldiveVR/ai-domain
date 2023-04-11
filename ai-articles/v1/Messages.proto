@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "RewrittenArticle.proto";
+
+package ai_wayz;
+
+message ArticleFoundMessage {
+  Article article = 1;
+}
+
+
+message ArticleProcessedMessage {
+  Article article = 1;
+}
