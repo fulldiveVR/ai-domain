@@ -6,7 +6,7 @@ package ai_wayz;
 message ArticleFoundMessage {
   OriginalArticleMetadata origin = 1;
   SourceMetadata source = 2;
-  repeated OpenAiMetadata open_ai_metadata = 3;
+  repeated AiRewriterMetadata ai_rewriter_metadata = 3;
 }
 
 

@@ -14,8 +14,7 @@ message Article {
 }
 
 message ArticleMetadata {
-  int32 tokens_spend = 1;
-  OpenAiMetadata open_ai_metadata = 2;
+  AiRewriterMetadata ai_rewriter_metadata = 2;
   OriginalArticleMetadata origin = 3;
   SourceMetadata source = 4;
 }
@@ -37,7 +36,8 @@ message SourceMetadata {
   string category = 3;
 }
 
-message OpenAiMetadata {
+message AiRewriterMetadata {
   string id = 1;
   string context = 2;
+  int32 tokens_spend = 3;
 }
