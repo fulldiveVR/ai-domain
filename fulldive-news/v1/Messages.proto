@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package fulldive_news;
+
+message ArticleFoundMessage {
+  ArticleMetadata origin = 1;
+}
+
+message ArticleProcessedMessage {
+  Article article = 1;
+}
+
+message Article {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  string imageUrl = 4;
+  ArticleMetadata metadata = 5;
+  google.protobuf.Timestamp created = 6;
+  google.protobuf.Timestamp updated = 7;
+}
+
+message ArticleMetadata {
+  string origin = 1;
+  string category = 2;
+  string location = 3;
+}
