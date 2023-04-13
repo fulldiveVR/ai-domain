@@ -21,7 +21,6 @@ message ReadabilityContentFetcherResponseMessage {
     string content = 1;
     string author = 2; 
     string image = 3;
-    string finalUrl = 4;
 }
 
 message OpenAiApiRequest {
