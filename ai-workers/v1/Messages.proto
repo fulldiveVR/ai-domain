@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package ai_wayz;
+
 message OpenAiRequestMessage {
   OpenAiRequest request = 1;
   string reply_pattern = 2;
