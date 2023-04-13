@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package ai_wayz;
 
-message OpenAiRequestMessage {
-  OpenAiRequest request = 1;
+message OpenAiCompletionRequestMessage {
+  OpenAiApiRequest request = 1;
   string reply_pattern = 2;
   int32 retries = 3;
 }
 
-message OpenAiResponseMessage {
+message OpenAiCompletionResponseMessage {
     string text = 1;
     int32 used_tokens = 2;
 }
@@ -23,7 +23,7 @@ message ReadabilityContentFetcherResponseMessage {
     string image = 3;
 }
 
-message OpenAiRequest {
+message OpenAiApiRequest {
   string model = 1; 
   string prompt = 2;
   float temperature = 3;
