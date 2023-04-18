@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+message FlowRun {
+  string id = 1;
+  Flow flow = 2;
+  map<string, string> variables = 3;
+}
+
+message Flow {
+  string id = 1;
+  Config config = 2;
+  string plugin_id = 3;
+  repeated Connection connections = 4;
+}
+
+message Config {
+  string version = 1;
+  string data = 2;
+}
+
+message Connection {
+  string version = 1;
+  string connection = 2;
+}
