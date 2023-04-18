@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package processing.task;
+
+message Config {
+  string version = 1;
+  string data = 2;
+}
+
+message Task {
+  string id = 1;
+  Config config = 2;
+  map<string, string> variables = 3;
+}
+
+enum ResultType {
+  TEXT = 0;
+  IMAGE = 1;
+  VIDEO = 2;
+}
+
+message TaskResponse {
+  string id = 1;
+  ResultType result = 2;
+  string data = 3;
+}
