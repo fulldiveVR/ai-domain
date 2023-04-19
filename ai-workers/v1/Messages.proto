@@ -7,15 +7,13 @@ package ai_wayz;
 message CompletionRequestMessage {
     string prompt = 1;
     float temperature = 2;
-    int32 max_tokens = 3;
-    string model = 4;
+    int32 max_response_tokens = 3;
 }
 
 message ChatCompletionRequestMessage {
     repeated ChatMessage messages = 1;
     float temperature = 2;
-    int32 max_tokens = 3;
-    string model = 4;
+    int32 max_response_tokens = 3;
 }
 
 message CompletionResponseMessage {
