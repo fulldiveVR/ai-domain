@@ -6,11 +6,12 @@ package ai_wayz;
 message ArticleFoundMessage {
   OriginalArticleMetadata origin = 1;
   SourceMetadata source = 2;
-  repeated AiRewriterMetadata ai_rewriter_metadata = 3;
+  repeated string desiredTranslations = 3;
 }
 
 
 message ArticleProcessedMessage {
   Article article = 1;
   string category = 2;
+  AiRewriterMetadata metadata = 3;
 }

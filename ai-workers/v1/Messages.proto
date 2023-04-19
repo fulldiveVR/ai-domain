@@ -4,23 +4,31 @@ package ai_wayz;
 
 // Open ai
 
-message OpenAiCompletionRequestMessage {
-    repeated OpenAiMessage messages = 1;
-    optional float temperature = 2;
-    optional int32 max_tokens = 3;
+message CompletionRequestMessage {
+    string prompt = 1;
+    float temperature = 2;
+    int32 max_tokens = 3;
+    string model = 4;
 }
 
-message OpenAiCompletionResponseMessage {
+message ChatCompletionRequestMessage {
+    repeated ChatMessage messages = 1;
+    float temperature = 2;
+    int32 max_tokens = 3;
+    string model = 4;
+}
+
+message CompletionResponseMessage {
     string text = 1;
     int32 used_tokens = 2;
 }
 
-message OpenAiMessage {
-    OpenAiMessageRole role = 1;
+message ChatMessage {
+    ChatMessageRole role = 1;
     string content = 2;
 }
 
-enum OpenAiMessageRole {
+enum ChatMessageRole {
     system = 0;
     user = 1;
     assistant = 2;

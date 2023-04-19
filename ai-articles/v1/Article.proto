@@ -14,9 +14,8 @@ message Article {
 }
 
 message ArticleMetadata {
-  AiRewriterMetadata ai_rewriter_metadata = 2;
-  OriginalArticleMetadata origin = 3;
-  SourceMetadata source = 4;
+  OriginalArticleMetadata origin = 1;
+  SourceMetadata source = 2;
 }
 
 enum ApprovalStatus {
@@ -37,7 +36,7 @@ message SourceMetadata {
 }
 
 message AiRewriterMetadata {
-  string id = 1;
-  string context = 2;
+  string desiredTranslation = 1;
+  string model = 2;
   int32 tokens_spend = 3;
 }
