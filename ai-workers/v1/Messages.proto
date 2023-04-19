@@ -21,6 +21,7 @@ message ChatCompletionRequestMessage {
 message CompletionResponseMessage {
     string text = 1;
     int32 used_tokens = 2;
+    string model = 3;
 }
 
 message AiModel {
