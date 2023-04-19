@@ -8,19 +8,24 @@ message CompletionRequestMessage {
     string prompt = 1;
     optional float temperature = 2;
     optional int32 max_response_tokens = 3;
-    optional string model = 4;
+    optional AiModel model = 4;
 }
 
 message ChatCompletionRequestMessage {
     repeated ChatMessage messages = 1;
     optional float temperature = 2;
     optional int32 max_response_tokens = 3;
-    optional string model = 4;
+    optional AiModel model = 4;
 }
 
 message CompletionResponseMessage {
     string text = 1;
     int32 used_tokens = 2;
+}
+
+message AiModel {
+    string name = 1;
+    string max_tokens = 2;
 }
 
 message ChatMessage {
