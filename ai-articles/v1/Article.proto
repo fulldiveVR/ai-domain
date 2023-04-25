@@ -19,9 +19,15 @@ message ArticleMetadata {
 }
 
 enum ApprovalStatus {
-  Approved = 0;
-  Rejected = 1;
-  Pending = 2;
+  Pending = 0;
+  Approved = 1;
+  Rejected = 2;
+  ImagesLoading = 3;
+  ImagesReady = 4;
+  ImagesLoadFailed = 5;
+  ImageLoading = 6;
+  ImageSelected = 7;
+  ImageSelectFailed = 8;
 }
 
 message OriginalArticleMetadata {
