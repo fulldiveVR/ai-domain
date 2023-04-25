@@ -9,8 +9,9 @@ message Config {
 
 message Task {
   string id = 1;
-  Config config = 2;
-  map<string, string> variables = 3;
+  string plugin_id = 2;
+  Config config = 3;
+  map<string, string> variables = 4;
 }
 
 enum ResultType {
