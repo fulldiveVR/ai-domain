@@ -9,9 +9,18 @@ message ArticleFoundMessage {
   repeated string desiredTranslations = 3;
 }
 
-
 message ArticleProcessedMessage {
   Article article = 1;
   string category = 2;
   AiRewriterMetadata metadata = 3;
+}
+
+message ArticleReviewReceivedCollage {
+  string title = 1;
+  string imageUrl = 2;
+}
+
+message ArticleReviewReceivedImage {
+  string title = 1;
+  string imageUrl = 2;
 }

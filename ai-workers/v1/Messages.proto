@@ -5,49 +5,60 @@ package ai_wayz;
 // Open ai
 
 message CompletionRequestMessage {
-    string prompt = 1;
-    optional float temperature = 2;
-    optional int32 max_response_tokens = 3;
-    optional AiModel model = 4;
+  string prompt = 1;
+  optional float temperature = 2;
+  optional int32 max_response_tokens = 3;
+  optional AiModel model = 4;
 }
 
 message ChatCompletionRequestMessage {
-    repeated ChatMessage messages = 1;
-    optional float temperature = 2;
-    optional int32 max_response_tokens = 3;
-    optional AiModel model = 4;
+  repeated ChatMessage messages = 1;
+  optional float temperature = 2;
+  optional int32 max_response_tokens = 3;
+  optional AiModel model = 4;
 }
 
 message CompletionResponseMessage {
-    string text = 1;
-    int32 used_tokens = 2;
-    string model = 3;
+  string text = 1;
+  int32 used_tokens = 2;
+  string model = 3;
 }
 
 message AiModel {
-    string name = 1;
-    int32 max_tokens = 2;
+  string name = 1;
+  int32 max_tokens = 2;
 }
 
 message ChatMessage {
-    ChatMessageRole role = 1;
-    string content = 2;
+  ChatMessageRole role = 1;
+  string content = 2;
 }
 
 enum ChatMessageRole {
-    system = 0;
-    user = 1;
-    assistant = 2;
+  system = 0;
+  user = 1;
+  assistant = 2;
 }
 
 // Readability
 
 message ReadabilityContentFetcherRequestMessage {
-    string url = 1;
+  string url = 1;
 }
 
 message ReadabilityContentFetcherResponseMessage {
-    string content = 1;
-    string author = 2;
-    string image = 3;
+  string content = 1;
+  string author = 2;
+  string image = 3;
+}
+
+// Image generator
+
+message ImageGeneratorGetRequestMessage {
+  string title = 1;
+}
+
+message ImageGeneratorSelectImageRequestMessage {
+  string title = 1;
+  int32 index = 2;
 }
