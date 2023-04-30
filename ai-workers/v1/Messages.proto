@@ -54,11 +54,19 @@ message ReadabilityContentFetcherResponseMessage {
 
 // Image generator
 
-message ImageGeneratorGetRequestMessage {
-  string title = 1;
+message GenerateImageRequestMessage {
+  string prompt = 1;
 }
 
-message ImageGeneratorSelectImageRequestMessage {
-  string title = 1;
+message GenerateImageResponseMessage {
+  string url = 1;
+}
+
+message UpscaleImageRequestMessage {
+  string url = 1;
   int32 index = 2;
+}
+
+message UpscaleImageResponseMessage {
+  string url = 1;
 }
