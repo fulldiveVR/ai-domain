@@ -63,7 +63,7 @@ message GenerateImageResponseMessage {
 }
 
 message UpscaleImageRequestMessage {
-  string url = 1;
+  string prompt = 1;
   int32 index = 2;
 }
 
