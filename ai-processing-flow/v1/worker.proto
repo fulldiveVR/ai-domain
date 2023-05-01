@@ -2,26 +2,43 @@ syntax = "proto3";
 
 package processing.task;
 
-message Config {
+
+message ExecutionMetadata {
+  string user_id = 1;
+  uint64 max_tokens = 2;
+}
+
+enum DataType {
+  URL = 0;
+  JSON = 1;
+  STREAM_ID = 2; // reserved for future use
+}
+
+message PluginInputData {
+  DataType type = 1;
+  string data = 2;
+}
+
+message PluginConfig {
   string version = 1;
   string data = 2;
 }
 
-message Task {
-  string id = 1;
+message WorkerInputMessage {
+  string plugin_id = 1;
+  string execution_id = 2;
+  ExecutionMetadata exec_metadata = 3;
+  PluginInputData input_data = 4;
+  PluginConfig config = 5;
+}
+
+message PluginOutputData {
+  DataType type = 1;
+  string data = 2;
+}
+
+message WorkerOutputMessage {
+  string execution_id = 1;
   string plugin_id = 2;
-  Config config = 3;
-  map<string, string> variables = 4;
-}
-
-enum ResultType {
-  TEXT = 0;
-  IMAGE = 1;
-  VIDEO = 2;
-}
-
-message TaskResponse {
-  string id = 1;
-  ResultType result = 2;
-  string data = 3;
+  PluginOutputData output_data = 3;
 }

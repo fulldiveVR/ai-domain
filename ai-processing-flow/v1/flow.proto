@@ -10,7 +10,6 @@ message Config {
 message FlowRun {
   string id = 1;
   Flow flow = 2;
-  map<string, string> variables = 3;
 }
 
 message Flow {
