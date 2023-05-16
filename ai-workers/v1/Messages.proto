@@ -48,8 +48,9 @@ message ReadabilityContentFetcherRequestMessage {
 
 message ReadabilityContentFetcherResponseMessage {
   string content = 1;
-  string author = 2;
-  string image = 3;
+  string title = 2;
+  string author = 3;
+  string image = 4;
 }
 
 // Image generator
