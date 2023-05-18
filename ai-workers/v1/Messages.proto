@@ -2,6 +2,11 @@ syntax = "proto3";
 
 package ai_wayz;
 
+service AiWayZService {
+  rpc Complete(CompletionRequestMessage) returns (CompletionResponseMessage) {}
+  rpc ChatComplete(ChatCompletionRequestMessage) returns (CompletionResponseMessage) {}
+}
+
 // Open ai
 
 message CompletionRequestMessage {
