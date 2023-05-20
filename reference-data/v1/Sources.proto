@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+// Represents an RSS source.
+message RssSource {
+  string url = 1;  // The URL of the RSS source.
+}
+
+// Represents a podcast source.
+message PodcastSource {
+  string url = 1;  // The URL of the podcast source.
+}
+
+// Represents a Fulldive source.
+message FulldiveSource {
+  string path = 1;  // The path of the Fulldive source.
+}
+
+// Represents a source.
+message Source {
+  string id = 1;           // The ID of the source.
+  string title = 2;        // The title of the source.
+  string iconUrl = 3;      // The URL of the icon for the source.
+  SourceTypes type = 4;    // The type of the source.
+  string hostDomain = 5;   // The host domain of the source.
+  bool isNSFW = 6;         // Indicates if the source is not safe.
+  string category = 7;     // Category of the source.
+  oneof data {
+    RssSource rssSource = 8;          // The RSS source.
+    PodcastSource podcastSource = 9;  // The podcast source.
+    FulldiveSource fulldiveSource = 10;  // The Fulldive source.
+  }
+}
+
+// Enumerates the types of sources.
+enum SourceTypes {
+  RSS = 0;       // RSS source type.
+  FULLDIVE = 1;  // Fulldive source type.
+  PODCAST = 2;   // Podcast source type.
+}
