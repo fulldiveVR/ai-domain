@@ -13,11 +13,12 @@ message Article {
   string headlines = 7;
   string keywords = 8;
   string tweets = 9;
-  ApprovalStatus approval_status = 10;
-  optional string imageUrl = 11;
-  google.protobuf.Timestamp created = 12;
-  google.protobuf.Timestamp updated = 13;
-  ArticleMetadata metadata = 14;
+  string facts = 10;
+  ApprovalStatus approval_status = 11;
+  optional string imageUrl = 12;
+  google.protobuf.Timestamp created = 13;
+  google.protobuf.Timestamp updated = 14;
+  ArticleMetadata metadata = 15;
 }
 
 message ArticleMetadata {
@@ -40,6 +41,7 @@ enum ApprovalStatus {
 message OriginalArticleMetadata {
   string url = 1;
   string pub_date = 2;
+  string content = 3;
 }
 
 message SourceMetadata {
