@@ -40,7 +40,7 @@ enum ApprovalStatus {
 
 message OriginalArticleMetadata {
   string url = 1;
-  string pub_date = 2;
+  google.protobuf.Timestamp pub_date = 2;
   string content = 3;
 }
 
