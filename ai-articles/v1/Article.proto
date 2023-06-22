@@ -19,6 +19,7 @@ message Article {
   google.protobuf.Timestamp created = 13;
   google.protobuf.Timestamp updated = 14;
   ArticleMetadata metadata = 15;
+  repeated ImageGeneratorMetadata imagesMetadata = 16;
 }
 
 message ArticleMetadata {
@@ -30,18 +31,13 @@ enum ApprovalStatus {
   Pending = 0;
   Approved = 1;
   Rejected = 2;
-  ImagesLoading = 3;
-  ImagesReady = 4;
-  ImagesLoadFailed = 5;
-  ImageLoading = 6;
-  ImageSelected = 7;
-  ImageSelectFailed = 8;
 }
 
 message OriginalArticleMetadata {
   string url = 1;
   google.protobuf.Timestamp pub_date = 2;
   string content = 3;
+  optional string imageUrl = 4;
 }
 
 message SourceMetadata {
@@ -54,4 +50,16 @@ message AiRewriterMetadata {
   string desiredTranslation = 1;
   string model = 2;
   int32 tokens_spend = 3;
+}
+
+message ImageGeneratorMetadata {
+  ImageGeneratorType type = 1;
+  bool isGenerating = 2;
+  optional string collageUrl = 3;
+  optional string imageUrl = 4;
+}
+
+enum ImageGeneratorType {
+  Comic = 0;
+  Realistic = 1;
 }
