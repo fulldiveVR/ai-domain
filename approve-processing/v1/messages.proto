@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package approve.processing;
+
+message ApproveRequest {
+  string id = 1;
+  string user_id = 2;
+  string text = 3;
+}
+
+message ApproveResult {
+  string id = 1;
+  string text = 2;
+}
