@@ -9,9 +9,10 @@ message Draft {
   string title = 3;
   string facts = 4;
   string proper_names = 5;
-  google.protobuf.Timestamp created = 6;
-  google.protobuf.Timestamp updated = 7;
-  ArticleMetadata metadata = 8;
+  string desired_translation = 6;
+  google.protobuf.Timestamp created = 7;
+  google.protobuf.Timestamp updated = 8;
+  ArticleMetadata metadata = 9;
 }
 
 message Article {
