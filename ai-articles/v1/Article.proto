@@ -52,7 +52,7 @@ enum ApprovalStatus {
 
 enum DraftStatus {
   Created = 0;
-  Published = 1;
+  Processed = 1;
   Deleted = 2;
 }
 
