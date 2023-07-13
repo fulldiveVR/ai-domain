@@ -11,5 +11,10 @@ message ApproveRequest {
 message ApproveResult {
   string id = 1;
   string text = 2;
-  bool approved = 3;
+  ApproveStatus approved = 3;
+}
+
+enum ApproveStatus {
+  APPROVED = 0;
+  REJECTED = 1;
 }
