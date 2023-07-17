@@ -62,6 +62,7 @@ message OriginalArticleMetadata {
   google.protobuf.Timestamp pub_date = 2;
   string content = 3;
   optional string imageUrl = 4;
+  repeated string contentImageUrls = 5;
 }
 
 message SourceMetadata {
