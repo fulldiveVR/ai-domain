@@ -5,7 +5,7 @@ package approve.processing;
 message Step {
   string app = 1;
   string action = 2;
-  string iconUrl = 3;
+  string icon_url = 3;
 }
 
 message Flow {
