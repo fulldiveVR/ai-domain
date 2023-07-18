@@ -3,25 +3,25 @@ syntax = "proto3";
 package approve.processing;
 
 message Step {
-    string app = 1;
-    string action = 2;
-    string iconUrl = 3;
+  string app = 1;
+  string action = 2;
+  string iconUrl = 3;
 }
 
 message Flow {
-    string name = 1;
-    string url = 2;
-    repeated Step steps = 3;
+  string name = 1;
+  string url = 2;
+  repeated Step steps = 3;
 }
 
 enum ContentType {
-    PLAIN = 0;
-    HTML = 1;
+  PLAIN = 0;
+  HTML = 1;
 }
 
 message Content {
-    ContentType type = 1;
-    string text = 2;
+  ContentType type = 1;
+  string text = 2;
 }
 
 message ApproveRequest {
@@ -32,8 +32,8 @@ message ApproveRequest {
 }
 
 enum ApproveStatus {
-    APPROVED = 0;
-    REJECTED = 1;
+  APPROVED = 0;
+  REJECTED = 1;
 }
 
 message ApproveResult {
