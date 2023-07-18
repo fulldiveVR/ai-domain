@@ -2,19 +2,42 @@ syntax = "proto3";
 
 package approve.processing;
 
+message Step {
+  string app = 1;
+  string action = 2;
+  string iconUrl = 3;
+}
+
+message Flow {
+  string name = 1;
+  string url = 2;
+  repeated Step steps = 3;
+}
+
+enum ContentType {
+  PLAIN = 0;
+  HTML = 1;
+}
+
+message Content {
+  ContentType type = 1;
+  string text = 2;
+}
+
 message ApproveRequest {
   string id = 1;
   string user_id = 2;
-  string text = 3;
-}
-
-message ApproveResult {
-  string id = 1;
-  string text = 2;
-  ApproveStatus approved = 3;
+  Content content = 3;
+  Flow flow = 4;
 }
 
 enum ApproveStatus {
   APPROVED = 0;
   REJECTED = 1;
+}
+
+message ApproveResult {
+  string id = 1;
+  Content content = 2;
+  ApproveStatus status = 3;
 }
