@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+import "common.proto";
+import "dashboard.proto";
+import "stripe.proto";
+
+// The payment period for a subscription.
+enum SubscriptionPeriod {
+  // Unspecified subscription period.
+  // Also means that the product is not a subscription.
+  SUBSCRIPTION_PERIOD_UNSPECIFIED = 0;
+
+  // The subscription is billed yearly.
+  SUBSCRIPTION_PERIOD_YEAR = 1;
+
+  // The subscription is billed monthly.
+  SUBSCRIPTION_PERIOD_MONTH = 2;
+}
+
+message ProductPrice {
+  // The ID of the price unique across the product. Should not be changed.
+  string id = 1;
+
+  // The currency of the price.
+  string currency = 2;
+
+  // Total amount in cents (or equivalent in other currency).
+  int32 price = 3;
+
+  // The billing provider that will be used for this price.
+  BillingProvider billing_provider = 4;
+
+  // The provider-specific data for this price.
+  oneof provider_data {
+    StripeProductData stripe_provider_data = 51;
+  }
+}
+
+message Product {
+  string id = 1;
+  BillingScope scope = 2;
+
+  // Indicates whether the product represents a subscription or one-time payment.
+  bool is_subscription = 3;
+
+  // The period of the subscription, if applicable.
+  SubscriptionPeriod subscription_period = 4;
+
+  // The available prices for this product.
+  repeated ProductPrice prices = 5;
+
+  // The scope-specific content for this product.
+  oneof content {
+    DashboardProductContent dashboard_content = 11;
+  }
+}

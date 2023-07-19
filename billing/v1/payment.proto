@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+import "common.proto";
+
+enum PaymentStatus {
+  PAYMENT_STATUS_UNSPECIFIED = 0;
+
+  // The payment has been created and waiting for the customer to pay.
+  PAYMENT_STATUS_CREATED = 1;
+
+  // The payment has been paid and waiting for the confirmation.
+  PAYMENT_STATUS_PENDING = 2;
+
+  // The payment has been confirmed and the money has been received.
+  PAYMENT_STATUS_SUCCESS = 3;
+
+  // The payment has been cancelled by the customer. May not be reported by all payment providers
+  // (EXPIRED will be reported instead).
+  PAYMENT_STATUS_CANCELLED = 4;
+
+  // The payment has been expired. Will be reported by all payment providers after a certain amount of time.
+  PAYMENT_STATUS_EXPIRED = 5;
+
+  // The payment has failed. Will be reported by all payment providers if the payment fails in any part of the process.
+  PAYMENT_STATUS_FAILED = 6;
+}
+
+// The generic payment type.
+message Payment {
+  string id = 1;
+  BillingScope scope = 2;
+  string user_id = 3;
+
+  PaymentStatus status = 4;
+
+  // The actual currency chosen by the user for this payment. Reported by the payment provider.
+  optional string currency = 5;
+
+  // Total amount in cents (or equivalent in other currency). Reported by the payment provider.
+  optional int32 amount = 6;
+
+  // The identifier of the subscription if this payment is for a subscription.
+  optional string subscription_id = 7;
+
+  // Whether this payment was created automatically by the payment provider, for example, when a subscription
+  // is automatically renewed.
+  bool is_automatic = 8;
+
+  // The billing provider that processed this payment.
+  BillingProvider billing_provider = 9;
+}

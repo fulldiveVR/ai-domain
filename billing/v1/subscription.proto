@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "product.proto";
+import "google/protobuf/timestamp.proto";
+
+enum SubscriptionStatus {
+  // The subscription status is unknown.
+  SUBSCRIPTION_STATUS_UNSPECIFIED = 0;
+
+  // The subscription is active: it has been paid for and not canceled or suspended.
+  // But it does not mean that the subscription is still valid. It may have expired, so the
+  // expires_at field should be checked.
+  SUBSCRIPTION_STATUS_ACTIVE = 1;
+
+  // The subscription has been canceled by the user and will not be renewed.
+  SUBSCRIPTION_STATUS_CANCELED = 2;
+
+  // The subscription has been suspended by the user and may be resumed without a new purchase later.
+  // Reserved for future use.
+  SUBSCRIPTION_STATUS_SUSPENDED = 3;
+}
+
+message Subscription {
+  string id = 1;
+  string user_id = 2;
+
+  Product product = 3;
+
+  SubscriptionStatus status = 4;
+  bool is_trial = 5;
+
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp expires_at = 7;
+
+  optional google.protobuf.Timestamp renewed_at = 8;
+  optional google.protobuf.Timestamp status_changed_at = 9;
+}
