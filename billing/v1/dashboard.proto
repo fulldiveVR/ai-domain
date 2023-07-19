@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+// Subscription types specific to the dashboard scope.
+enum DashboardSubscriptionType {
+  DASHBOARD_SUBSCRIPTION_TYPE_UNSPECIFIED = 0;
+  DASHBOARD_SUBSCRIPTION_TYPE_STARTER = 1;
+  DASHBOARD_SUBSCRIPTION_TYPE_BOSS_MODE = 2;
+}
+
+// Product content specific to the dashboard scope.
+message DashboardProductContent {
+  // The type of subscription the user has.
+  DashboardSubscriptionType subscription_type = 1;
+
+  // The total amount of credits available to the user for the period.
+  int32 credits = 2;
+}

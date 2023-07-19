@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+// The scope where the billing service is used.
+// In the same scope, users have the same paid features and subscriptions.
+enum BillingScope {
+  BILLING_SCOPE_UNSPECIFIED = 0;
+
+  // The billing service is used in the AI Wize Dashboard.
+  // Possible it is the single scope in the near future.
+  BILLING_SCOPE_DASHBOARD = 1;
+}
+
+enum BillingProvider {
+  BILLING_PROVIDER_UNSPECIFIED = 0;
+
+  // The billing service is provided by Stripe.
+  BILLING_PROVIDER_STRIPE = 1;
+}

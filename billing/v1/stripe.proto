@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message StripeProductData {
+  string price_id = 1;
+}
+
+message StripePaymentData {
+  string checkout_session_id = 1;
+}
+
+message StripeSubscriptionData {
+  string subscription_id = 1;
+}
+
+message StripeCustomerData {
+  string customer_id = 1;
+}
