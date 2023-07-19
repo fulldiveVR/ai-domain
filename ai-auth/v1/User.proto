@@ -3,24 +3,24 @@ import "google/protobuf/timestamp.proto";
 
 package ai_wayz;
 
-message User {
+message IUser {
   string id = 1;
   string userName = 2;
-  UserRole roles = 3;
-  Provider provider = 4;
+  IUserRole roles = 3;
+  IProvider provider = 4;
   google.protobuf.Timestamp created = 5;
   google.protobuf.Timestamp updated = 6;
 }
 
-message Provider {
-    EmailProvider email = 1;
+message IProvider {
+    IEmailProvider email = 1;
 }
 
-message EmailProvider {
+message IEmailProvider {
   string id = 1;
 }
 
-enum UserRole {
+enum IUserRole {
   user = 0;
   admin = 1;
 }
