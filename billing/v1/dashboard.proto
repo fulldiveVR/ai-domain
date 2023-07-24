@@ -1,10 +1,11 @@
 syntax = "proto3";
 
+package billing;
+
 // Subscription types specific to the dashboard scope.
 enum DashboardSubscriptionType {
-  DASHBOARD_SUBSCRIPTION_TYPE_UNSPECIFIED = 0;
-  DASHBOARD_SUBSCRIPTION_TYPE_STARTER = 1;
-  DASHBOARD_SUBSCRIPTION_TYPE_BOSS_MODE = 2;
+  STARTER = 0;
+  BOSS_MODE = 1;
 }
 
 // Product content specific to the dashboard scope.

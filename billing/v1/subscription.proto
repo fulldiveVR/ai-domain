@@ -1,23 +1,31 @@
 syntax = "proto3";
 
+package billing;
+
 import "product.proto";
 import "google/protobuf/timestamp.proto";
 
 enum SubscriptionStatus {
-  // The subscription status is unknown.
-  SUBSCRIPTION_STATUS_UNSPECIFIED = 0;
+  // The subscription is in trial period. It has not been paid for yet.
+  // When trial period ends, the user will be charged and the subscription will be renewed.
+  // If if succeeds, the status will be changed to ACTIVE, otherwise to UNPAID.
+  TRIAL = 0;
 
   // The subscription is active: it has been paid for and not canceled or suspended.
   // But it does not mean that the subscription is still valid. It may have expired, so the
   // expires_at field should be checked.
-  SUBSCRIPTION_STATUS_ACTIVE = 1;
+  ACTIVE = 2;
 
   // The subscription has been canceled by the user and will not be renewed.
-  SUBSCRIPTION_STATUS_CANCELED = 2;
+  CANCELED = 3;
 
   // The subscription has been suspended by the user and may be resumed without a new purchase later.
   // Reserved for future use.
-  SUBSCRIPTION_STATUS_SUSPENDED = 3;
+  SUSPENDED = 4;
+
+  // The subscription was not canceled, but has expired and renew failed.
+  // User needs to take action to renew the subscription.
+  UNPAID = 5;
 }
 
 message Subscription {
@@ -25,13 +33,18 @@ message Subscription {
   string user_id = 2;
 
   Product product = 3;
-
   SubscriptionStatus status = 4;
-  bool is_trial = 5;
 
-  google.protobuf.Timestamp created_at = 6;
-  google.protobuf.Timestamp expires_at = 7;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp expires_at = 6;
 
-  optional google.protobuf.Timestamp renewed_at = 8;
-  optional google.protobuf.Timestamp status_changed_at = 9;
+  optional google.protobuf.Timestamp renewed_at = 7;
+  optional google.protobuf.Timestamp status_changed_at = 8;
+}
+
+// The message pattern for subscription events.
+// Topic: billing.subscription
+enum SubscriptionMessagePattern {
+  SUBSCRIPTION_MESSAGE_PATTERN_CREATED = 0;
+  SUBSCRIPTION_MESSAGE_PATTERN_UPDATED = 1;
 }
