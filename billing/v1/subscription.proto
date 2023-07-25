@@ -26,6 +26,10 @@ enum SubscriptionStatus {
   // The subscription was not canceled, but has expired and renew failed.
   // User needs to take action to renew the subscription.
   UNPAID = 5;
+
+  // The subscription was unrecoverable deleted at the end of the billing cycle.
+  // A new subscription should be purchased to continue using the product.
+  DELETED = 6;
 }
 
 message Subscription {
