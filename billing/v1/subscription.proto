@@ -16,7 +16,9 @@ enum SubscriptionStatus {
   // expires_at field should be checked.
   ACTIVE = 2;
 
-  // The subscription has been canceled by the user and will not be renewed.
+  // The subscription has been canceled by the user and will not be renewed automatically.
+  // But this subscription is still valid until the end of the current period.
+  // It can be resumed without a new purchase later.
   CANCELED = 3;
 
   // The subscription has been suspended by the user and may be resumed without a new purchase later.
