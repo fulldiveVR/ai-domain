@@ -2,23 +2,27 @@ syntax = "proto3";
 
 package billing;
 
-enum PaymentStatus {
-  // The payment has been created and waiting for the customer to pay.
-  CREATED = 0;
+message PaymentStatus {
+  // protocol buffers))
+  // текст
+  enum _ {
+    // The payment has been created and waiting for the customer to pay.
+    CREATED = 0;
 
-  // The payment has been paid and waiting for the confirmation.
-  PENDING = 1;
+    // The payment has been paid and waiting for the confirmation.
+    PENDING = 1;
 
-  // The payment has been confirmed and the money has been received.
-  SUCCESS = 2;
+    // The payment has been confirmed and the money has been received.
+    SUCCESS = 2;
 
-  // The payment has been canceled by the customer. May not be reported by all payment providers
-  // (EXPIRED will be reported instead).
-  CANCELED = 3;
+    // The payment has been canceled by the customer. May not be reported by all payment providers
+    // (EXPIRED will be reported instead).
+    CANCELED = 3;
 
-  // The payment has been expired. Will be reported by all payment providers after a certain amount of time.
-  EXPIRED = 4;
+    // The payment has been expired. Will be reported by all payment providers after a certain amount of time.
+    EXPIRED = 4;
 
-  // The payment has failed. Will be reported by all payment providers if the payment fails in any part of the process.
-  FAILED = 5;
+    // The payment has failed. Will be reported by all payment providers if the payment fails in any part of the process.
+    FAILED = 5;
+  }
 }
