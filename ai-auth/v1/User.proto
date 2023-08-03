@@ -6,14 +6,14 @@ package ai_wayz;
 message IUser {
   string id = 1;
   string userName = 2;
-  IUserRole roles = 3;
+  repeated IUserRole roles = 3;
   IProvider provider = 4;
   google.protobuf.Timestamp created = 5;
   google.protobuf.Timestamp updated = 6;
 }
 
 message IProvider {
-    IEmailProvider email = 1;
+  IEmailProvider email = 1;
 }
 
 message IEmailProvider {
