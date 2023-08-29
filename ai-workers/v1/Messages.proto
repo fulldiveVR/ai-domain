@@ -5,6 +5,8 @@ package ai_wayz;
 service AiWayZService {
   rpc Complete(CompletionRequestMessage) returns (CompletionResponseMessage) {}
   rpc ChatComplete(ChatCompletionRequestMessage) returns (CompletionResponseMessage) {}
+  rpc CompleteStream(CompletionRequestMessage) returns (stream CompletionResponseMessage) {}
+  rpc ChatCompleteStream(ChatCompletionRequestMessage) returns (stream CompletionResponseMessage) {}
 }
 
 // Open ai
