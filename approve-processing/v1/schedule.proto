@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+import "action.proto";
+import "post.proto";
+
+message ScheduledActionInvocation {
+  string action_id = 1;
+  ScheduledAction.InvocationData invocation_data = 2;
+
+  // The content of the action that represents it semantically
+  // It is used to both: calculate the action invocation data and display the action in the UI
+  // It also can be modified by the user in the UI
+  oneof content {
+    // The content of the action is a post that will be posted in a social network
+    ScheduledPost post = 3;
+  }
+}
+
+message ScheduledActionInvocationConfirmation {
+  string action_id = 1;
+  bool success = 2;
+
+  oneof result {
+    google.protobuf.Struct error = 3; 
+    google.protobuf.Struct output = 4; 
+  }
+
+  google.protobuf.Timestamp finished_at = 5;
+}
+
+enum ScheduleMessagePattern {
+  // Payload: ScheduledAction
+  SCHEDULE_MESSAGE_PATTERN_ACTION_CREATED = 0;
+
+  // Payload: ScheduledActionInvocation
+  SCHEDULE_MESSAGE_PATTERN_ACTION_INVOKED = 1;
+
+  // Payload: ScheduledActionInvocationConfirmation
+  SCHEDULE_MESSAGE_PATTERN_ACTION_INVOCATION_CONFIRMED = 2;
+}

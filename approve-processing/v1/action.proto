@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "post.proto";
+
+message ScheduledAction {
+  enum Status {
+    // The action was created and is waiting for being scheduled (reserved for future use)
+    CREATED = 0;
+
+    // The action is scheduled and will be invoked at the scheduled time
+    SCHEDULED = 1;
+
+    // The action was rejected and will not be scheduled
+    REJECTED = 2;
+
+    // The action was invoked
+    INVOKED = 3;
+
+    // The action was successfully completed
+    COMPLETED = 4;
+
+    // The action failed
+    FAILED = 5;
+  }
+
+  // The data that will be displayed to the user in the UI
+  message DisplayData {
+    // The localization key for the action name (eg. "instagram")
+    string localization_key = 1;
+
+    // The display name of the action (eg. "Instagram")
+    string display_name = 2;
+
+    // The description of the action (eg. "Create a post on Instagram")
+    optional string description = 3;
+
+    // The url of the image that will be displayed in the UI
+    optional string image_url = 4;
+  }
+
+  // The underlying automatisch action that will be executed
+  message InvocationData {
+    string flowId = 1;
+    string executionId = 2;
+    string stepId = 3;
+  }
+
+  string id = 1;
+  Status status = 2;
+
+  // The user who created the action
+  string user_id = 3;
+
+  // The title of the flow that created the action
+  string flow_title = 4;
+
+  // The content of the action that represents it semantically
+  // It is used to both: calculate the action invocation data and display the action in the UI
+  // It also can be modified by the user in the UI
+  oneof content {
+    // The content of the action is a post that will be posted in a social network
+    ScheduledPost post = 5;
+  }
+
+  // The data that will be displayed to the user in the UI
+  DisplayData display_data = 6;
+
+  // The underlying automatisch action that will be executed
+  InvocationData invocation_data = 7;
+
+  // The time when the action was created
+  google.protobuf.Timestamp createdAt = 8;
+
+  // The time when the action should be invoked by the scheduler
+  optional google.protobuf.Timestamp scheduled_at = 9;
+
+  // The time when the action was invoked by the scheduler
+  // It may be different from the scheduledDate if the scheduler was down at the time
+  // It also may be different from the finishedDate if the automatisch was down at the time
+  // It will be undefined if the action was not yet invoked
+  optional google.protobuf.Timestamp invoked_at = 10;
+
+  // The time when the action was finished (either completed or failed)
+  optional google.protobuf.Timestamp finished_at = 11;
+}

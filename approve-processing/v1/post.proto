@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+// The post that is going to be scheduled and published to the social network(s)
+message ScheduledPost {
+  message Attachment {
+    enum Type {
+      IMAGE = 0;
+    }
+
+    string id = 1;
+    string url = 2;
+    Type type = 3;
+  }
+
+  string body = 1;
+  repeated Attachment attachments = 2;
+}

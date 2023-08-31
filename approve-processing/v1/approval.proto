@@ -2,10 +2,17 @@ syntax = "proto3";
 
 package approve.processing;
 
+import "google/protobuf/timestamp.proto";
+
 message ApproveRequest {
   string id = 1;
   string user_id = 2;
   string text = 3;
+
+  string flow_title = 4;
+  optional string image_url = 5;
+  
+  google.protobuf.Timestamp created_at = 6;
 }
 
 message ApproveResult {
