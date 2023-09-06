@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+message FlowData {
+  string name = 1;
+}
+
+message AppData {
+  string name = 1;
+  string iconUrl = 2;
+}
+
+message StepData {
+  string name = 1;
+  AppData app= 2;
+}
+
+message ExecutionData {
+  string url = 1;
+  string date = 2;
+  optional string message = 3;
+  StepData step = 4;
+}
+
+message AutopilotNotificationPayloadData {
+  FlowData flow = 1;
+  ExecutionData execution = 2;
+}
+
+message AutopilotNotificationPayload {
+  string userId = 1;
+  AutopilotNotificationPayloadData data = 2;
+}
+
