@@ -2,11 +2,15 @@ syntax = "proto3";
 
 package ai_wayz;
 
+import "google/protobuf/struct.proto";
+
 service AiWayZService {
   rpc Complete(CompletionRequestMessage) returns (CompletionResponseMessage) {}
   rpc ChatComplete(ChatCompletionRequestMessage) returns (CompletionResponseMessage) {}
   rpc CompleteStream(CompletionRequestMessage) returns (stream CompletionResponseMessage) {}
   rpc ChatCompleteStream(ChatCompletionRequestMessage) returns (stream CompletionResponseMessage) {}
+
+  rpc GetEmbedding(EmbeddingRequestMessage) returns (EmbeddingResponseMessage) {}
 }
 
 // Open ai
@@ -23,12 +27,28 @@ message ChatCompletionRequestMessage {
   optional float temperature = 2;
   optional int32 max_response_tokens = 3;
   optional AiModel model = 4;
+
+  repeated ChatCompletionFunction functions = 5;
+  oneof funciton_call {
+    bool none = 6;
+    string function_name = 7;
+  };
 }
 
 message CompletionResponseMessage {
+  message FunctionCall {
+    optional string name = 1;
+    optional string arguments = 2;
+  }
+
   string text = 1;
   int32 used_tokens = 2;
   string model = 3;
+
+  // The function call that was made or it's delta if streaming
+  // If no functions were configured, this always will be empty
+  // and all stream frames will contain non-empty "text" field
+  optional FunctionCall function_call = 4;
 }
 
 message AiModel {
@@ -41,10 +61,24 @@ message ChatMessage {
   string content = 2;
 }
 
+message ChatCompletionFunction {
+  string name = 1;
+  string description = 2;
+  google.protobuf.Struct parameters = 3;
+}
+
 enum ChatMessageRole {
   system = 0;
   user = 1;
   assistant = 2;
+}
+
+message EmbeddingRequestMessage {
+  string prompt = 1;
+}
+
+message EmbeddingResponseMessage {
+  repeated float embedding = 1;
 }
 
 // Readability
