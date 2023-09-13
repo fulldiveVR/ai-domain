@@ -63,14 +63,15 @@ message ChatMessage {
 
 message ChatCompletionFunction {
   string name = 1;
-  string description = 2;
-  google.protobuf.Struct parameters = 3;
+  optional string description = 2;
+  optional google.protobuf.Struct parameters = 3;
 }
 
 enum ChatMessageRole {
   system = 0;
   user = 1;
   assistant = 2;
+  function = 3;
 }
 
 message EmbeddingRequestMessage {
