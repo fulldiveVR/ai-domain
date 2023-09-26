@@ -13,4 +13,7 @@ enum BillingScope {
 enum BillingProvider {
   // The billing service is provided by Stripe.
   STRIPE = 0;
+
+  // The billing service is provided by YooKassa.
+  YOOKASSA = 1;
 }
