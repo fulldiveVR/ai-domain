@@ -3,7 +3,6 @@ syntax = "proto3";
 package ai_wayz;
 
 import "Article.proto";
-import "Source.proto";
 
 message ArticleFoundMessage {
   OriginalArticleMetadata origin = 1;

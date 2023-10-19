@@ -14,7 +14,6 @@ message Draft {
   google.protobuf.Timestamp created = 6;
   google.protobuf.Timestamp updated = 7;
   ArticleMetadata metadata = 8;
-  string sourceId = 9;
 }
 
 enum DraftStatus {
