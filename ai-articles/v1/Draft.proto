@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+import "google/protobuf/timestamp.proto";
+import "Article.proto";
+
+message Draft {
+  string id = 1;
+  DraftStatus status = 2;
+  string title = 3;
+  string facts = 4;
+  string properNames = 5;
+  google.protobuf.Timestamp created = 6;
+  google.protobuf.Timestamp updated = 7;
+  ArticleMetadata metadata = 8;
+  string sourceId = 9;
+}
+
+enum DraftStatus {
+  Created = 0;
+  Generating = 1;
+  Processed = 2;
+  Deleted = 3;
+}

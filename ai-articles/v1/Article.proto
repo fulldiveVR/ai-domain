@@ -1,31 +1,22 @@
 syntax = "proto3";
-import "google/protobuf/timestamp.proto";
 
 package ai_wayz;
 
-message Draft {
-  string id = 1;
-  DraftStatus status = 2;
-  string title = 3;
-  string facts = 4;
-  string proper_names = 5;
-  google.protobuf.Timestamp created = 6;
-  google.protobuf.Timestamp updated = 7;
-  ArticleMetadata metadata = 8;
-}
+import "google/protobuf/timestamp.proto";
+import "Source.proto";
 
 message Article {
   string id = 1;
   string title = 2;
   string content = 3;
   string summarise = 4;
-  string seo_blurb = 5;
-  string proper_names = 6;
+  string seoBlurb = 5;
+  string properNames = 6;
   string headlines = 7;
   string keywords = 8;
   string tweets = 9;
   string facts = 10;
-  ApprovalStatus approval_status = 11;
+  ApprovalStatus approvalStatus = 11;
   optional string imageUrl = 12;
   google.protobuf.Timestamp created = 13;
   google.protobuf.Timestamp updated = 14;
@@ -35,7 +26,7 @@ message Article {
 
 message ArticleMetadata {
   OriginalArticleMetadata origin = 1;
-  SourceMetadata source = 2;
+  Source source = 2;
 }
 
 enum ApprovalStatus {
@@ -50,31 +41,18 @@ enum ApprovalStatus {
   ImageSelectFailed = 8;
 }
 
-enum DraftStatus {
-  Created = 0;
-  Generating = 1;
-  Processed = 2;
-  Deleted = 3;
-}
-
 message OriginalArticleMetadata {
   string url = 1;
-  google.protobuf.Timestamp pub_date = 2;
+  google.protobuf.Timestamp pubDate = 2;
   string content = 3;
   optional string imageUrl = 4;
   repeated string contentImageUrls = 5;
 }
 
-message SourceMetadata {
-  string url = 1;
-  string title = 2;
-  string category = 3;
-}
-
 message AiRewriterMetadata {
   string desiredTranslation = 1;
   string model = 2;
-  int32 tokens_spend = 3;
+  int32 tokensSpend = 3;
 }
 
 message ImageGeneratorMetadata {

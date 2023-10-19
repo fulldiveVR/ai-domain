@@ -1,12 +1,13 @@
 syntax = "proto3";
-import "Article.proto";
 
 package ai_wayz;
 
+import "Article.proto";
+import "Source.proto";
+
 message ArticleFoundMessage {
   OriginalArticleMetadata origin = 1;
-  SourceMetadata source = 2;
-  repeated string desiredTranslations = 3;
+  string sourceId = 2;
 }
 
 message ArticleProcessedMessage {

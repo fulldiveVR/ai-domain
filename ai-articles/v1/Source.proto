@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+message Source {
+  string id = 1;
+  string title = 2;
+  string url = 3;
+  SourceType type = 4;
+  repeated AiRewriteData rewriteData = 5;
+}
+
+enum SourceType {
+  rss = 0;
+}
+
+message AiRewriteData {
+  string id = 1;
+  string systemContent = 2;
+  string userContent = 3;
+  int32 temperature = 4;
+  string model = 5;
+}
