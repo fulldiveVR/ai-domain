@@ -53,7 +53,11 @@ enum SubscriptionMessagePattern {
   SUBSCRIPTION_MESSAGE_PATTERN_CREATED = 0;
   SUBSCRIPTION_MESSAGE_PATTERN_UPDATED = 1;
   SUBSCRIPTION_MESSAGE_PATTERN_DELETED = 2;
+}
 
+// The message pattern for subscription notification events.
+// Topic: billing.subscription.notification
+enum SubscriptionNotificationMessagePattern {
   // Emits when the active trial period ends in one day and the subscription will be renewed by charging the user.
-  SUBSCRIPTION_MESSAGE_PATTERN_TRIAL_ENDS_IN_ONE_DAY = 3;
+  SUBSCRIPTION_NOTIFICATION_MESSAGE_PATTERN_TRIAL_ENDS_IN_ONE_DAY = 0;
 }
