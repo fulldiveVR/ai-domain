@@ -2,16 +2,19 @@ syntax = "proto3";
 
 package ai_wayz;
 
+import "google/protobuf/struct.proto";
+
 message Source {
   string id = 1;
   string title = 2;
-  string url = 3;
   SourceType type = 4;
-  repeated AiRewriteData rewriteData = 5;
+  google.protobuf.Value data = 5;
+  repeated AiRewriteData rewriteData = 6;
 }
 
 enum SourceType {
   rss = 0;
+  manual = 1;
 }
 
 message AiRewriteData {
