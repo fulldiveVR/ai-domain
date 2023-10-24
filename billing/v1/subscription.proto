@@ -60,4 +60,7 @@ enum SubscriptionMessagePattern {
 enum SubscriptionNotificationMessagePattern {
   // Emits when the active trial period ends in one day and the subscription will be renewed by charging the user.
   SUBSCRIPTION_NOTIFICATION_MESSAGE_PATTERN_TRIAL_ENDS_IN_ONE_DAY = 0;
+
+  // Emits when the active trial period ends in two days and the subscription will be renewed by charging the user.
+  SUBSCRIPTION_NOTIFICATION_MESSAGE_PATTERN_TRIAL_ENDS_IN_TWO_DAYS = 1;
 }
