@@ -17,8 +17,7 @@ enum SubscriptionStatus {
 
   // The subscription has been canceled by the user and will not be renewed automatically.
   // But this subscription is still valid until the end of the current period.
-  // It can be resumed without a new purchase later before the end of the current period.
-  // After the end of the current period, this status also becomes final.
+  // It can be resumed without a new purchase later.
   CANCELED = 3;
 
   // The subscription has been suspended by the user and may be resumed without a new purchase later.
@@ -26,12 +25,12 @@ enum SubscriptionStatus {
   SUSPENDED = 4;
 
   // The subscription was not canceled, but has expired and renew failed.
-  // It is the final state of the subscription and it will not be changed in any way.
+  // User needs to take action to renew the subscription.
   UNPAID = 5;
 
-  // The subscription was canceled during the trial period.
-  // It is the final state of the subscription and it will not be changed in any way.
-  CANCELED_TRIAL = 6;
+  // The subscription was unrecoverable deleted at the end of the billing cycle.
+  // A new subscription should be purchased to continue using the product.
+  DELETED = 6;
 }
 
 message Subscription {
@@ -53,6 +52,7 @@ message Subscription {
 enum SubscriptionMessagePattern {
   SUBSCRIPTION_MESSAGE_PATTERN_CREATED = 0;
   SUBSCRIPTION_MESSAGE_PATTERN_UPDATED = 1;
+  SUBSCRIPTION_MESSAGE_PATTERN_DELETED = 2;
 }
 
 // The message pattern for subscription notification events.
