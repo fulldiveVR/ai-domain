@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+import "google/protobuf/timestamp.proto";
+
+message User {
+  string id = 1;
+  repeated string roles = 2;
+  google.protobuf.Timestamp expiresOn = 3;
+}

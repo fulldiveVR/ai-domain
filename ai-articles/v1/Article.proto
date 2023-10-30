@@ -4,6 +4,7 @@ package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
 import "Source.proto";
+import "User.proto";
 
 message Article {
   string id = 1;
@@ -22,6 +23,7 @@ message Article {
   google.protobuf.Timestamp updated = 14;
   ArticleMetadata metadata = 15;
   repeated ImageGeneratorMetadata imagesMetadata = 16;
+  User creator = 17;
 }
 
 message ArticleMetadata {

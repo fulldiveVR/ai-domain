@@ -3,10 +3,12 @@ syntax = "proto3";
 package ai_wayz;
 
 import "Article.proto";
+import "User.proto";
 
 message ArticleFoundMessage {
   OriginalArticleMetadata origin = 1;
   string sourceId = 2;
+  User creator = 3;
 }
 
 message ArticleProcessedMessage {
