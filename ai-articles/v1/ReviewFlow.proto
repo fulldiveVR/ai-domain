@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+import "google/protobuf/timestamp.proto";
+
+message ReviewFlow {
+  string id = 1;
+  google.protobuf.Timestamp created = 2;
+  ReviewFlowOriginalNewsData originalNewsData = 3;
+  repeated ReviewFlowAiData aiData = 4;
+  repeated string defaultRewriteKeywords = 5;
+}
+
+message ReviewFlowAiData {
+  string id = 1;
+  string systemContent = 2;
+  string userContent = 3;
+  int32 temperature = 4;
+  string model = 5;
+}
+
+message ReviewFlowOriginalNewsData {
+  int32 minLength = 1;
+  int32 maxTokensCount = 2;
+  repeated string excludedDomains = 3;
+}

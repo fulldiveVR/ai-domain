@@ -10,19 +10,11 @@ message Source {
   string title = 2;
   SourceType type = 4;
   google.protobuf.Value data = 5;
-  repeated AiRewriteData rewriteData = 6;
+  string reviewFlowId = 6;
   google.protobuf.Timestamp created = 7;
 }
 
 enum SourceType {
   rss = 0;
   manual = 1;
-}
-
-message AiRewriteData {
-  string id = 1;
-  string systemContent = 2;
-  string userContent = 3;
-  int32 temperature = 4;
-  string model = 5;
 }
