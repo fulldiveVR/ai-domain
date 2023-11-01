@@ -9,9 +9,10 @@ message ReviewFlow {
   string id = 1;
   google.protobuf.Timestamp created = 2;
   ReviewFlowOriginalNewsData originalNewsData = 3;
-  repeated ReviewFlowAiData aiData = 4;
-  repeated string defaultRewriteKeywords = 5;
-  User creator = 6;
+  map<string, string> aiPrompts = 4;
+  repeated ReviewFlowAiData aiData = 5;
+  repeated string defaultRewriteKeywords = 6;
+  User creator = 7;
 }
 
 message ReviewFlowAiData {
