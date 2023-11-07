@@ -3,7 +3,6 @@ syntax = "proto3";
 package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
-import "Source.proto";
 import "User.proto";
 
 message Article {
@@ -24,24 +23,18 @@ message Article {
   ArticleMetadata metadata = 15;
   repeated ImageGeneratorMetadata imagesMetadata = 16;
   User creator = 17;
+  AiRewriterMetadata aiRewriterMetadata = 18;
 }
 
 message ArticleMetadata {
   OriginalArticleMetadata origin = 1;
-  Source source = 2;
-  string sourceId = 3;
+  string sourceId = 2;
 }
 
 enum ApprovalStatus {
   Pending = 0;
   Approved = 1;
   Rejected = 2;
-  ImagesLoading = 3;
-  ImagesReady = 4;
-  ImagesLoadFailed = 5;
-  ImageLoading = 6;
-  ImageSelected = 7;
-  ImageSelectFailed = 8;
 }
 
 message OriginalArticleMetadata {
@@ -53,9 +46,8 @@ message OriginalArticleMetadata {
 }
 
 message AiRewriterMetadata {
-  string desiredTranslation = 1;
-  string model = 2;
-  int32 tokensSpend = 3;
+  string model = 1;
+  int32 tokensSpend = 2;
 }
 
 message ImageGeneratorMetadata {
