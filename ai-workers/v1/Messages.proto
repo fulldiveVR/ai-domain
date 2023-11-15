@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package ai_wayz;
 
+option go_package = "github.com/ai-domain/ai-workers/v1/types";
+
 import "google/protobuf/struct.proto";
+import "google/protobuf/any.proto";
 
 service AiWayZService {
   rpc Complete(CompletionRequestMessage) returns (CompletionResponseMessage) {}
@@ -11,6 +14,11 @@ service AiWayZService {
   rpc ChatCompleteStream(ChatCompletionRequestMessage) returns (stream CompletionResponseMessage) {}
 
   rpc GetEmbedding(EmbeddingRequestMessage) returns (EmbeddingResponseMessage) {}
+
+  rpc CreateThread(CreateThreadRequest) returns (ThreadResponse) {}
+  rpc RetrieveThread(RetrieveThreadRequest) returns (ThreadResponse) {}
+  rpc ModifyThread(ModifyThreadRequest) returns (ThreadResponse) {}
+  rpc DeleteThread(DeleteThreadRequest) returns (ThreadDeleteResponse) {}
 }
 
 // Open ai
@@ -80,6 +88,44 @@ message EmbeddingRequestMessage {
 
 message EmbeddingResponseMessage {
   repeated float embedding = 1;
+}
+
+
+message ThreadMessage {
+  string role = 1;
+  string content = 2;
+  repeated string file_ids = 3;
+  map<string, google.protobuf.Any> metadata = 4;
+}
+
+message CreateThreadRequest {
+  repeated ThreadMessage messages = 1;
+  map<string, google.protobuf.Any> metadata = 2;
+}
+
+message ThreadResponse {
+  string id = 1;
+  string object = 2;
+  int64 created_at = 3;
+  map<string, google.protobuf.Any> metadata = 4;
+}
+
+message RetrieveThreadRequest {
+  string id = 1;
+}
+
+message ModifyThreadRequest {
+  map<string, google.protobuf.Any> metadata = 1;
+}
+
+message DeleteThreadRequest {
+  string id = 1;
+}
+
+message ThreadDeleteResponse {
+  string id = 1;
+  string object = 2;
+  bool deleted = 3;
 }
 
 // Readability
