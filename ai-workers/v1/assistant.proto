@@ -1,0 +1,229 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+option go_package = "github.com/ai-domain/ai-workers/v1/types";
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service AssistantService {
+  // Assistant API
+  rpc CreateAssistant (CreateAssistantRequest) returns (Assistant) {}
+  rpc UpdateAssistant (UpdateAssistantRequest) returns (Assistant) {}
+  rpc ListAssistants (google.protobuf.Empty) returns (ListAssistantsResponse) {}
+
+  // Thread API
+  rpc CreateThread (CreateThreadRequest) returns (Thread) {}
+  rpc DeleteThread (DeleteThreadRequest) returns (DeleteThreadResponse) {}
+
+  // Message API
+  rpc CreateMessage (CreateThreadMessageRequest) returns (ThreadMessage) {}
+
+  // Run API
+  rpc CreateRun (CreateThreadRunRequest) returns (ThreadRun) {}
+  rpc RetrieveRun (RetrieveThreadRunRequest) returns (ThreadRun) {}
+  rpc CancelRun (CancelThreadRunRequest) returns (ThreadRun) {} 
+  rpc SubmitToolOutputs (SubmitToolOutputsRequest) returns (ThreadRun) {}
+  rpc ListRunSteps (ListThreadRunStepsRequest) returns (ListThreadRunStepsResponse) {}
+}
+
+// Common
+message Error {
+  string code = 1;
+  string message = 2;
+}
+
+// Assistant API
+message Assistant {
+  string id = 1;
+  optional string name = 2;
+  optional string description = 3;
+  string model = 4;
+  optional string instructions = 5;
+  repeated Tool tools = 6;
+  map<string, string> metadata = 7;
+
+  message Tool {
+    string type = 1;
+    optional Function function = 2;
+
+    message Function {
+      string name = 1;
+      optional string description = 2;
+      optional google.protobuf.Struct parameters = 3;
+    }
+  }
+}
+
+message AssistantInput {
+  optional string model = 1;
+  optional string name = 2;
+  optional string description = 3;
+  optional string instructions = 4;
+  repeated Assistant.Tool tools = 5;
+  map<string, string> metadata = 6;
+}
+
+message CreateAssistantRequest {
+  AssistantInput input = 1;
+}
+
+message UpdateAssistantRequest {
+  string assistant_id = 1;
+  AssistantInput input = 2;
+}
+
+message ListAssistantsResponse {
+  repeated Assistant assistants = 1;
+}
+
+// Thread API
+message Thread {
+  string id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  map<string, string> metadata = 3;
+}
+
+message CreateThreadRequest {
+  repeated ThreadMessageInput messages = 1;
+  map<string, string> metadata = 2;
+}
+
+message DeleteThreadRequest {
+  string id = 1;
+}
+
+message DeleteThreadResponse {
+  bool deleted = 1;
+}
+
+// Message API
+message ThreadMessage {
+  string id = 1;
+  string role = 2;
+  Content content = 3;
+  string thread_id = 4;
+  optional string assistant_id = 5;
+  optional string run_id = 6;
+  google.protobuf.Timestamp created_at = 7;
+  map<string, string> metadata = 8;
+
+  message Content {
+    string type = 1;
+    optional Text text = 2;
+
+    message Text {
+      string value = 1;
+    }
+  }
+}
+
+message ThreadMessageInput {
+  string role = 1;
+  string content = 2;
+  map<string, string> metadata = 3;
+}
+
+message CreateThreadMessageRequest {
+  string thread_id = 1;
+  ThreadMessageInput input = 2;
+}
+
+// Run API
+message ToolCall {
+  string id = 1;
+  string type = 2;
+  optional Function function = 3;
+
+  message Function {
+    string name = 1;
+    string arguments = 2;
+  }
+}
+
+message ThreadRun {
+  string id = 1;
+  string thread_id = 2;
+  string assistant_id = 3;
+  string status = 4;
+  optional RequiredAction required_action = 5;
+  optional Error last_error = 6;
+  map<string, string> metadata = 7;
+
+  message RequiredAction {
+    string type = 1;
+    optional SubmitToolOutputs submit_tool_outputs = 2;
+
+    message SubmitToolOutputs {
+      repeated ToolCall tool_calls = 1;
+    }
+  }
+}
+
+message ThreadRunInput {
+  string assistant_id = 1;
+  optional string model = 2;
+  optional string instructions = 3;
+  optional Assistant.Tool tools = 4;
+  map<string, string> metadata = 5;
+}
+
+message CreateThreadRunRequest {
+  string thread_id = 1;
+  ThreadMessageInput input = 2;
+}
+
+message RetrieveThreadRunRequest {
+  string thread_id = 1;
+  string run_id = 2;
+}
+
+message CancelThreadRunRequest {
+  string thread_id = 1;
+  string run_id = 2;
+}
+
+message SubmitToolOutputsRequest {
+  string thread_id = 1;
+  string run_id = 2;
+  repeated ToolOutput tool_outputs = 3;
+
+  message ToolOutput {
+    string tool_call_id = 1;
+    string output = 2;
+  }
+}
+
+message ThreadRunStep {
+  string id = 1;
+  string run_id = 2;
+  string type = 3;
+  string status = 4;
+  Details details = 5;
+  Error last_error = 6;
+
+  message Details {
+    string type = 1;
+    optional MessageCreation message_creation = 2;
+    optional TooCalls tool_calls = 3;
+
+    message MessageCreation {
+      string message_id = 1;
+    }
+
+    message TooCalls {
+      repeated ToolCall tool_calls = 1;
+    }
+  }
+}
+
+message ListThreadRunStepsRequest {
+  string thread_id = 1;
+  string run_id = 2;
+}
+
+message ListThreadRunStepsResponse {
+  repeated ThreadRunStep steps = 1;
+}
