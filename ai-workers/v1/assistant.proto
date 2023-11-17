@@ -172,7 +172,7 @@ message ThreadRunInput {
 
 message CreateThreadRunRequest {
   string thread_id = 1;
-  ThreadMessageInput input = 2;
+  ThreadRunInput input = 2;
 }
 
 message RetrieveThreadRunRequest {
