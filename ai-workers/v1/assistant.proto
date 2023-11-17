@@ -20,11 +20,12 @@ service AssistantService {
 
   // Message API
   rpc CreateMessage (CreateThreadMessageRequest) returns (ThreadMessage) {}
+  rpc RetrieveMessage (RetrieveThreadMessageRequest) returns (ThreadMessage) {}
 
   // Run API
   rpc CreateRun (CreateThreadRunRequest) returns (ThreadRun) {}
   rpc RetrieveRun (RetrieveThreadRunRequest) returns (ThreadRun) {}
-  rpc CancelRun (CancelThreadRunRequest) returns (ThreadRun) {} 
+  rpc CancelRun (CancelThreadRunRequest) returns (ThreadRun) {}
   rpc SubmitToolOutputs (SubmitToolOutputsRequest) returns (ThreadRun) {}
   rpc ListRunSteps (ListThreadRunStepsRequest) returns (ListThreadRunStepsResponse) {}
 }
@@ -129,6 +130,11 @@ message ThreadMessageInput {
 message CreateThreadMessageRequest {
   string thread_id = 1;
   ThreadMessageInput input = 2;
+}
+
+message RetrieveThreadMessageRequest {
+  string thread_id = 1;
+  string message_id = 2;
 }
 
 // Run API
