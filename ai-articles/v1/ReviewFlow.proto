@@ -10,12 +10,23 @@ message ReviewFlow {
   google.protobuf.Timestamp created = 2;
   ReviewFlowOriginalNewsData originalNewsData = 3;
   map<string, string> aiPrompts = 4;
-  repeated ReviewFlowAiData aiData = 5;
-  repeated string defaultRewriteKeywords = 6;
+  ReviewFlowAiData aiData = 5;
+  ReviewFlowRewriteData rewriteData = 6;
   User creator = 7;
 }
 
 message ReviewFlowAiData {
+    ReviewFlowAiRequest facts = 1;
+    ReviewFlowAiRequest properNames = 2;
+    ReviewFlowAiRequest rewrite = 3;
+    ReviewFlowAiRequest keywords = 4;
+    ReviewFlowAiRequest seoBlurb = 5;
+    ReviewFlowAiRequest tweets = 6;
+    ReviewFlowAiRequest summarise = 7;
+    ReviewFlowAiRequest headlines = 8;
+}
+
+message ReviewFlowAiRequest {
   string id = 1;
   string systemContent = 2;
   string userContent = 3;
@@ -27,4 +38,14 @@ message ReviewFlowOriginalNewsData {
   int32 minLength = 1;
   int32 maxTokensCount = 2;
   repeated string excludedDomains = 3;
+}
+
+enum ReviewFlowGoogleTrendsGeo {
+  US = 0;
+  TW = 1;
+}
+
+message ReviewFlowRewriteData {
+  repeated string defaultKeywords = 1;
+  ReviewFlowGoogleTrendsGeo googleTrendsGeo = 2;
 }
