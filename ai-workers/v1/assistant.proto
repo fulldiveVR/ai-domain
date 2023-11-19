@@ -104,7 +104,7 @@ message DeleteThreadResponse {
 message ThreadMessage {
   string id = 1;
   string role = 2;
-  Content content = 3;
+  repeated Content content = 3;
   string thread_id = 4;
   optional string assistant_id = 5;
   optional string run_id = 6;
@@ -172,7 +172,7 @@ message ThreadRunInput {
   string assistant_id = 1;
   optional string model = 2;
   optional string instructions = 3;
-  optional Assistant.Tool tools = 4;
+  repeated Assistant.Tool tools = 4;
   map<string, string> metadata = 5;
 }
 
