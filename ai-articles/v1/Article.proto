@@ -40,9 +40,10 @@ enum ApprovalStatus {
 message OriginalArticleMetadata {
   google.protobuf.Timestamp pubDate = 1;
   string content = 2;
-  optional string url = 3;
-  optional string imageUrl = 4;
-  repeated string contentImageUrls = 5;
+  optional string title = 3;
+  optional string url = 4;
+  optional string imageUrl = 5;
+  repeated string contentImageUrls = 6;
 }
 
 message AiRewriterMetadata {
