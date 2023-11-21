@@ -13,17 +13,18 @@ message Article {
   string seoBlurb = 5;
   string properNames = 6;
   string headlines = 7;
-  string keywords = 8;
-  string tweets = 9;
-  string facts = 10;
-  ApprovalStatus approvalStatus = 11;
-  optional string imageUrl = 12;
-  google.protobuf.Timestamp created = 13;
-  google.protobuf.Timestamp updated = 14;
-  ArticleMetadata metadata = 15;
-  repeated ImageGeneratorMetadata imagesMetadata = 16;
-  User creator = 17;
-  AiRewriterMetadata aiRewriterMetadata = 18;
+  string shortTitles = 8;
+  string keywords = 9;
+  string tweets = 10;
+  string facts = 11;
+  ApprovalStatus approvalStatus = 12;
+  optional string imageUrl = 13;
+  google.protobuf.Timestamp created = 14;
+  google.protobuf.Timestamp updated = 15;
+  ArticleMetadata metadata = 16;
+  repeated ImageGeneratorMetadata imagesMetadata = 17;
+  User creator = 18;
+  AiRewriterMetadata aiRewriterMetadata = 19;
 }
 
 message ArticleMetadata {
