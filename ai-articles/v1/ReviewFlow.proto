@@ -24,6 +24,7 @@ message ReviewFlowAiData {
     ReviewFlowAiRequest tweets = 6;
     ReviewFlowAiRequest summarise = 7;
     ReviewFlowAiRequest headlines = 8;
+    ReviewFlowAiRequest shortTitles = 9;
 }
 
 message ReviewFlowAiRequest {
