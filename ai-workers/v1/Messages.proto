@@ -55,7 +55,7 @@ message CompletionResponseMessage {
 
 message AiModel {
   string name = 1;
-  int32 max_tokens = 2;
+  optional int32 max_tokens = 2;
 }
 
 message ChatMessage {
