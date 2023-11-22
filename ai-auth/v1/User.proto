@@ -10,6 +10,8 @@ message IUser {
   IProvider provider = 4;
   google.protobuf.Timestamp created = 5;
   google.protobuf.Timestamp updated = 6;
+  string organization = 7;
+  repeated string teams = 8;
 }
 
 message IProvider {
