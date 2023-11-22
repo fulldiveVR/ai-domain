@@ -4,7 +4,6 @@ package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
 import "Article.proto";
-import "User.proto";
 
 message Draft {
   string id = 1;
@@ -15,7 +14,7 @@ message Draft {
   google.protobuf.Timestamp created = 6;
   google.protobuf.Timestamp updated = 7;
   ArticleMetadata metadata = 8;
-  User creator = 9;
+  string creatorId = 9;
 }
 
 enum DraftStatus {

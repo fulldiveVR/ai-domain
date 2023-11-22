@@ -3,7 +3,6 @@ syntax = "proto3";
 package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
-import "User.proto";
 
 message Article {
   string id = 1;
@@ -23,7 +22,7 @@ message Article {
   google.protobuf.Timestamp updated = 15;
   ArticleMetadata metadata = 16;
   repeated ImageGeneratorMetadata imagesMetadata = 17;
-  User creator = 18;
+  string creatorId = 18;
   AiRewriterMetadata aiRewriterMetadata = 19;
 }
 

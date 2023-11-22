@@ -3,7 +3,6 @@ syntax = "proto3";
 package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
-import "User.proto";
 
 message ReviewFlow {
   string id = 1;
@@ -12,7 +11,7 @@ message ReviewFlow {
   map<string, string> aiPrompts = 4;
   ReviewFlowAiData aiData = 5;
   ReviewFlowRewriteData rewriteData = 6;
-  User creator = 7;
+  string creatorId = 7;
 }
 
 message ReviewFlowAiData {

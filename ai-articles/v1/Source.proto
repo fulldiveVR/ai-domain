@@ -4,7 +4,6 @@ package ai_wayz;
 
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
-import "User.proto";
 
 message Source {
   string id = 1;
@@ -13,7 +12,7 @@ message Source {
   google.protobuf.Value data = 5;
   string reviewFlowId = 6;
   google.protobuf.Timestamp created = 7;
-  User creator = 8;
+  string creatorId = 8;
 }
 
 enum SourceType {
