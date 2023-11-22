@@ -37,7 +37,6 @@ message ReviewFlowAiRequest {
 
 message ReviewFlowOriginalNewsData {
   int32 minLength = 1;
-  int32 maxTokensCount = 2;
   repeated string excludedDomains = 3;
 }
 
