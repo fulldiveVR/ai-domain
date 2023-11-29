@@ -61,6 +61,7 @@ message AiModel {
 message ChatMessage {
   ChatMessageRole role = 1;
   string content = 2;
+  optional string name = 3;
 }
 
 message ChatCompletionFunction {
