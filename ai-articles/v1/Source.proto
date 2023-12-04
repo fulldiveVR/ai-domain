@@ -20,4 +20,5 @@ enum SourceType {
   manual = 1;
   xmlSitemap = 2;
   api = 3;
+  xpath = 4;
 }
