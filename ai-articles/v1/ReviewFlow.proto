@@ -24,6 +24,7 @@ message ReviewFlowAiData {
     ReviewFlowAiRequest summarise = 7;
     ReviewFlowAiRequest headlines = 8;
     ReviewFlowAiRequest shortTitles = 9;
+    ReviewFlowAiRequest extractArticles = 10;
 }
 
 message ReviewFlowAiRequest {
@@ -32,6 +33,7 @@ message ReviewFlowAiRequest {
   string userContent = 3;
   int32 temperature = 4;
   string model = 5;
+  string modelForLongText = 6;
 }
 
 message ReviewFlowOriginalNewsData {
