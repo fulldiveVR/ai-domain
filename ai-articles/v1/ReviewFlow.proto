@@ -28,12 +28,12 @@ message ReviewFlowAiData {
 }
 
 message ReviewFlowAiRequest {
-  string id = 1;
-  string systemContent = 2;
-  string userContent = 3;
-  int32 temperature = 4;
-  string model = 5;
-  string modelForLongText = 6;
+  string systemContent = 1;
+  string userContent = 2;
+  int32 temperature = 3;
+  string model = 4;
+  string modelForLongText = 5;
+  repeated string tools = 6;
 }
 
 message ReviewFlowOriginalNewsData {

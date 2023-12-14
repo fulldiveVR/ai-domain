@@ -27,8 +27,8 @@ message Article {
 }
 
 message ArticleMetadata {
-  OriginalArticleMetadata origin = 1;
-  string sourceId = 2;
+  string sourceId = 1;
+  OriginalArticleMetadata origin = 2;
 }
 
 enum ApprovalStatus {

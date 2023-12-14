@@ -2,25 +2,12 @@ syntax = "proto3";
 
 package ai_wayz;
 
-import "Article.proto";
+import "google/protobuf/timestamp.proto";
 
 message ArticleFoundMessage {
-  OriginalArticleMetadata origin = 1;
-  string sourceId = 2;
-}
-
-message ArticleProcessedMessage {
-  Article article = 1;
-  string category = 2;
-  AiRewriterMetadata metadata = 3;
-}
-
-message ArticleReviewReceivedCollage {
-  string title = 1;
-  string imageUrl = 2;
-}
-
-message ArticleReviewReceivedImage {
-  string title = 1;
-  string imageUrl = 2;
+  string sourceId = 1;
+  string url = 2;
+  optional string title = 3;
+  optional string content = 4;
+  google.protobuf.Timestamp pubDate = 5;
 }
