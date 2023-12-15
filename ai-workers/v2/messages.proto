@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package ai_wayz_v2;
+
+option go_package = "github.com/ai-domain/ai-workers/v2/types.v2";
+
+service AiWayZService {
+  rpc Complete(CompletionRequestMessage) returns (CompletionResponseMessage) {}
+  rpc ChatComplete(ChatCompletionRequestMessage) returns (CompletionResponseMessage) {}
+  rpc CompleteStream(CompletionRequestMessage) returns (stream CompletionResponseMessage) {}
+  rpc ChatCompleteStream(ChatCompletionRequestMessage) returns (stream CompletionResponseMessage) {}
+
+  rpc GetEmbedding(EmbeddingRequestMessage) returns (EmbeddingResponseMessage) {}
+}
+
+// Open ai
+
+message CompletionRequestMessage {
+  string prompt = 1;
+  optional float temperature = 2;
+  optional int32 max_response_tokens = 3;
+  optional AiModel model = 4;
+}
+
+message ChatCompletionRequestMessage {
+  repeated ChatMessage messages = 1;
+  optional float temperature = 2;
+  optional int32 max_response_tokens = 3;
+  optional AiModel model = 4;
+
+  repeated ChatCompletionTool tools = 5;
+  string tool_choice = 6;
+}
+
+message CompletionResponseMessage {
+  message ToolCall {
+    optional string name = 1;
+    optional string arguments = 2;
+  }
+
+  string text = 1;
+  int32 used_tokens = 2;
+  string model = 3;
+
+  // The function call that was made or it's delta if streaming
+  // If no functions were configured, this always will be empty
+  // and all stream frames will contain non-empty "text" field
+  repeated ToolCall tool_calls = 4;
+}
+
+message AiModel {
+  string name = 1;
+  optional int32 max_tokens = 2;
+}
+
+message ChatMessage {
+  ChatMessageRole role = 1;
+  string content = 2;
+  optional string name = 3;
+}
+
+message ChatCompletionTool {
+  string type = 1;
+  Function function = 2;
+}
+
+message Function {
+  string name = 1;
+  optional string description = 2;
+  string parameters = 3;
+}
+
+enum ChatMessageRole {
+  system = 0;
+  user = 1;
+  assistant = 2;
+  function = 3;
+}
+
+message EmbeddingRequestMessage {
+  string prompt = 1;
+}
+
+message EmbeddingResponseMessage {
+  repeated float embedding = 1;
+}
+
+// Readability
+
+message ReadabilityContentFetcherRequestMessage {
+  string url = 1;
+}
+
+message ReadabilityContentFetcherResponseMessage {
+  string content = 1;
+  string title = 2;
+  string author = 3;
+  string image = 4;
+}
+
+// Image generator
+
+message GenerateImageRequestMessage {
+  string prompt = 1;
+}
+
+message GenerateImageResponseMessage {
+  string url = 1;
+}
+
+message UpscaleImageRequestMessage {
+  string prompt = 1;
+  int32 index = 2;
+}
+
+message UpscaleImageResponseMessage {
+  string url = 1;
+}
