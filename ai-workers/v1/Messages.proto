@@ -4,8 +4,6 @@ package ai_wayz;
 
 option go_package = "github.com/ai-domain/ai-workers/v1/types";
 
-import "google/protobuf/struct.proto";
-
 service AiWayZService {
   rpc Complete(CompletionRequestMessage) returns (CompletionResponseMessage) {}
   rpc ChatComplete(ChatCompletionRequestMessage) returns (CompletionResponseMessage) {}
@@ -30,15 +28,12 @@ message ChatCompletionRequestMessage {
   optional int32 max_response_tokens = 3;
   optional AiModel model = 4;
 
-  repeated ChatCompletionFunction functions = 5;
-  oneof funciton_call {
-    bool none = 6;
-    string function_name = 7;
-  };
+  repeated ChatCompletionTool tools = 5;
+  string tool_choice = 6;
 }
 
 message CompletionResponseMessage {
-  message FunctionCall {
+  message ToolCall {
     optional string name = 1;
     optional string arguments = 2;
   }
@@ -50,7 +45,7 @@ message CompletionResponseMessage {
   // The function call that was made or it's delta if streaming
   // If no functions were configured, this always will be empty
   // and all stream frames will contain non-empty "text" field
-  optional FunctionCall function_call = 4;
+  repeated ToolCall tool_calls = 4;
 }
 
 message AiModel {
@@ -64,10 +59,15 @@ message ChatMessage {
   optional string name = 3;
 }
 
-message ChatCompletionFunction {
+message ChatCompletionTool {
+  string type = 1;
+  Function function = 2;
+}
+
+message Function {
   string name = 1;
   optional string description = 2;
-  optional google.protobuf.Struct parameters = 3;
+  string parameters = 3;
 }
 
 enum ChatMessageRole {
