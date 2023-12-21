@@ -11,6 +11,8 @@ service AiWayZService {
   rpc ChatCompleteStream(ChatCompletionRequestMessage) returns (stream CompletionResponseMessage) {}
 
   rpc GetEmbedding(EmbeddingRequestMessage) returns (EmbeddingResponseMessage) {}
+
+  rpc TranscriptAudio(stream TranscriptAudioRequestMessage) returns (TranscriptAudioResponseMessage) {}
 }
 
 // Open ai
@@ -83,6 +85,20 @@ message EmbeddingRequestMessage {
 
 message EmbeddingResponseMessage {
   repeated float embedding = 1;
+}
+
+message TranscriptAudioRequestMessage {
+  bytes chunk = 1;
+  string language = 2;
+  string model = 3;
+  string format_response = 4;
+  string format_file = 5;
+  string prompt = 6;
+  float temperature = 7;
+}
+
+message TranscriptAudioResponseMessage {
+  string text = 1;
 }
 
 // Readability
