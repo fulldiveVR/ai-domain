@@ -89,12 +89,12 @@ message EmbeddingResponseMessage {
 
 message TranscriptAudioRequestMessage {
   bytes chunk = 1;
-  string language = 2;
-  string model = 3;
-  string format_response = 4;
-  string format_file = 5;
-  string prompt = 6;
-  float temperature = 7;
+  string model = 2;
+  string format_response = 3;
+  string format_file = 4;
+  optional string language = 5;
+  optional string prompt = 6;
+  optional float temperature = 7;
 }
 
 message TranscriptAudioResponseMessage {
