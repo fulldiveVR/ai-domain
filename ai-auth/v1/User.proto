@@ -26,4 +26,5 @@ message IProviderData {
 enum IUserRole {
   user = 0;
   admin = 1;
+  visitor = 2;
 }
