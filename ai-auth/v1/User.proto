@@ -15,10 +15,11 @@ message IUser {
 }
 
 message IProvider {
-  IEmailProvider email = 1;
+  IProviderData email = 1;
+  IProviderData visitor = 2;
 }
 
-message IEmailProvider {
+message IProviderData {
   string id = 1;
 }
 
