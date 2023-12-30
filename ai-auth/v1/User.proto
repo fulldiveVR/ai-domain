@@ -15,8 +15,8 @@ message IUser {
 }
 
 message IProvider {
-  IProviderData email = 1;
-  IProviderData visitor = 2;
+  optional IProviderData email = 1;
+  optional IProviderData visitor = 2;
 }
 
 message IProviderData {
