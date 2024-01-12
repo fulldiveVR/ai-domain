@@ -15,14 +15,16 @@ message IUser {
 }
 
 message IProvider {
-  IEmailProvider email = 1;
+  optional IProviderData email = 1;
+  optional IProviderData visitor = 2;
 }
 
-message IEmailProvider {
+message IProviderData {
   string id = 1;
 }
 
 enum IUserRole {
   user = 0;
   admin = 1;
+  visitor = 2;
 }
