@@ -16,14 +16,15 @@ message Article {
   string keywords = 9;
   string tweets = 10;
   string facts = 11;
-  ApprovalStatus approvalStatus = 12;
-  optional string imageUrl = 13;
-  google.protobuf.Timestamp created = 14;
-  google.protobuf.Timestamp updated = 15;
-  ArticleMetadata metadata = 16;
-  repeated ImageGeneratorMetadata imagesMetadata = 17;
-  string creatorId = 18;
-  AiRewriterMetadata aiRewriterMetadata = 19;
+  repeated string imageKeywords = 12;
+  ApprovalStatus approvalStatus = 13;
+  optional string imageUrl = 14;
+  google.protobuf.Timestamp created = 15;
+  google.protobuf.Timestamp updated = 16;
+  ArticleMetadata metadata = 17;
+  repeated ImageGeneratorMetadata imagesMetadata = 18;
+  string creatorId = 19;
+  AiRewriterMetadata aiRewriterMetadata = 20;
 }
 
 message ArticleMetadata {

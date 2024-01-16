@@ -25,6 +25,9 @@ message ReviewFlowAiData {
     ReviewFlowAiRequest headlines = 8;
     ReviewFlowAiRequest shortTitles = 9;
     ReviewFlowAiRequest extractArticles = 10;
+    ReviewFlowAiRequest imageKeywordsGenerate = 11;
+    ReviewFlowAiRequest imageKeywordsTranslate = 12;
+    ReviewFlowAiRequest imageKeywordsSynonyms = 13;
 }
 
 message ReviewFlowAiRequest {
