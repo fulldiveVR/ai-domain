@@ -4,12 +4,12 @@ message INotification {
   string id = 1;
   NotificationType type = 2;
   string userId = 3;
-  string img = 3;
-  string title = 3;
-  string content = 3;
-  bool isNew = 3;
-  string creator = 3;
-  google.protobuf.Timestamp created = 3;
+  string img = 4;
+  string title = 5;
+  string content = 6;
+  bool isNew = 7;
+  string creator = 8;
+  google.protobuf.Timestamp created = 9;
 }
 
 enum NotificationType {
