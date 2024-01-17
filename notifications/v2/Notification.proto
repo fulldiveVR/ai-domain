@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message INotification {
+  string id = 1;
+  NotificationType type;
+  string userId;
+  string img;
+  string title;
+  string content;
+  bool isNew;
+  string creator;
+  google.protobuf.Timestamp created;
+}
+
+enum NotificationType {
+  GLOBAL = "global";
+  APPROVE_REQUIRED = "approve_required";
+  FLOW_FAILED = "flow_failed";
+  FEEDBACK_IN_WORK = "feedback_in_work";
+}
