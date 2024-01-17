@@ -18,8 +18,9 @@ message Draft {
 }
 
 enum DraftStatus {
-  Created = 0;
-  Generating = 1;
-  Processed = 2;
-  Deleted = 3;
+  Scraped = 0;
+  Created = 1;
+  Generating = 2;
+  Processed = 3;
+  Deleted = 4;
 }
