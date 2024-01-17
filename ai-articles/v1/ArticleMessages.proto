@@ -9,5 +9,5 @@ message ArticleFoundMessage {
   string url = 2;
   optional string title = 3;
   optional string content = 4;
-  google.protobuf.Timestamp pubDate = 5;
+  optional google.protobuf.Timestamp pubDate = 5;
 }
