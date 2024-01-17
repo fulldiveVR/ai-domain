@@ -13,8 +13,8 @@ message INotification {
 }
 
 enum NotificationType {
-  GLOBAL = "global";
-  APPROVE_REQUIRED = "approve_required";
-  FLOW_FAILED = "flow_failed";
-  FEEDBACK_IN_WORK = "feedback_in_work";
+  GLOBAL = 1;
+  APPROVE_REQUIRED = 2;
+  FLOW_FAILED = 3;
+  FEEDBACK_IN_WORK = 4;
 }
