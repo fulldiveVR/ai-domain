@@ -2,14 +2,14 @@ syntax = "proto3";
 
 message INotification {
   string id = 1;
-  NotificationType type;
-  string userId;
-  string img;
-  string title;
-  string content;
-  bool isNew;
-  string creator;
-  google.protobuf.Timestamp created;
+  NotificationType type = 2;
+  string userId = 3;
+  string img = 3;
+  string title = 3;
+  string content = 3;
+  bool isNew = 3;
+  string creator = 3;
+  google.protobuf.Timestamp created = 3;
 }
 
 enum NotificationType {
