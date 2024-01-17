@@ -1,6 +1,8 @@
 syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 
+package ai_wayz;
+
 message INotification {
   string id = 1;
   NotificationType type = 2;
