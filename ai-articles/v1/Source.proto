@@ -13,7 +13,8 @@ message Source {
   SourceType type = 5;
   google.protobuf.Value data = 6;
   google.protobuf.Timestamp created = 7;
-  bool needAutoProcessing = 8;
+  google.protobuf.Timestamp updated = 8;
+  bool needAutoProcessing = 9;
 }
 
 enum SourceType {
