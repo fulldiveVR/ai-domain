@@ -6,12 +6,13 @@ import "google/protobuf/timestamp.proto";
 
 message ReviewFlow {
   string id = 1;
-  google.protobuf.Timestamp created = 2;
-  ReviewFlowOriginalNewsData originalNewsData = 3;
+  string title = 2;
+  string creatorId = 3;
   map<string, string> aiPrompts = 4;
-  ReviewFlowAiData aiData = 5;
-  ReviewFlowRewriteData rewriteData = 6;
-  string creatorId = 7;
+  google.protobuf.Timestamp created = 5;
+  ReviewFlowOriginalNewsData originalNewsData = 6;
+  ReviewFlowAiData aiData = 7;
+  ReviewFlowRewriteData rewriteData = 8;
 }
 
 message ReviewFlowAiData {

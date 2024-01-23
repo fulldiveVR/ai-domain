@@ -9,12 +9,13 @@ message Draft {
   string id = 1;
   DraftStatus status = 2;
   string title = 3;
-  string facts = 4;
-  string properNames = 5;
+  optional string facts = 4;
+  optional string properNames = 5;
   google.protobuf.Timestamp created = 6;
   google.protobuf.Timestamp updated = 7;
   ArticleMetadata metadata = 8;
   string creatorId = 9;
+  optional Editor claimedEditor = 10;
 }
 
 enum DraftStatus {

@@ -25,6 +25,7 @@ message Article {
   repeated ImageGeneratorMetadata imagesMetadata = 18;
   string creatorId = 19;
   AiRewriterMetadata aiRewriterMetadata = 20;
+  optional Editor claimedEditor = 21;
 }
 
 message ArticleMetadata {
@@ -62,4 +63,9 @@ message ImageGeneratorMetadata {
 enum ImageGeneratorType {
   Comic = 0;
   Realistic = 1;
+}
+
+message Editor {
+  string id = 1;
+  string email = 2;
 }
