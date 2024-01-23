@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package ai_wayz;
 
+import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
 message ReviewFlow {
@@ -32,12 +33,14 @@ message ReviewFlowAiData {
 }
 
 message ReviewFlowAiRequest {
-  string systemContent = 1;
-  string userContent = 2;
-  int32 temperature = 3;
-  string model = 4;
-  string modelForLongText = 5;
-  repeated string tools = 6;
+  string id = 1;
+  string title = 2;
+  string systemContent = 3;
+  string userContent = 4;
+  int32 temperature = 5;
+  string model = 6;
+  string modelForLongText = 7;
+  repeated google.protobuf.Value tools = 8;
 }
 
 message ReviewFlowOriginalNewsData {
