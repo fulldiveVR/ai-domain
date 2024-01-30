@@ -14,5 +14,4 @@ message Environment {
   google.protobuf.Timestamp created = 7;
   google.protobuf.Timestamp updated = 8;
   optional string sourceIdManual = 9;
-
 }
