@@ -10,10 +10,11 @@ message ReviewFlow {
   string title = 2;
   string creatorId = 3;
   map<string, string> aiPrompts = 4;
-  google.protobuf.Timestamp created = 5;
-  ReviewFlowOriginalNewsData originalNewsData = 6;
-  ReviewFlowAiData aiData = 7;
-  ReviewFlowRewriteData rewriteData = 8;
+  repeated ReviewFlowAiRequest aiRequests = 5;
+  google.protobuf.Timestamp created = 6;
+  ReviewFlowOriginalNewsData originalNewsData = 7;
+  ReviewFlowAiData aiData = 8;
+  ReviewFlowRewriteData rewriteData = 9;
 }
 
 message ReviewFlowAiData {
@@ -39,8 +40,9 @@ message ReviewFlowAiRequest {
   string userContent = 4;
   int32 temperature = 5;
   string model = 6;
-  string modelForLongText = 7;
-  repeated google.protobuf.Value tools = 8;
+  optional string modelForLongText = 7;
+  optional google.protobuf.Value tools = 8;
+  optional bool isNeeded = 9;
 }
 
 message ReviewFlowOriginalNewsData {

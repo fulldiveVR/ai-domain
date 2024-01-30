@@ -6,26 +6,27 @@ import "google/protobuf/timestamp.proto";
 
 message Article {
   string id = 1;
-  string title = 2;
-  string content = 3;
-  string summarise = 4;
-  string seoBlurb = 5;
-  string properNames = 6;
-  string headlines = 7;
-  string shortTitles = 8;
-  string keywords = 9;
-  string tweets = 10;
-  string facts = 11;
-  repeated string imageKeywords = 12;
-  ApprovalStatus approvalStatus = 13;
-  optional string imageUrl = 14;
-  google.protobuf.Timestamp created = 15;
-  google.protobuf.Timestamp updated = 16;
-  ArticleMetadata metadata = 17;
-  repeated ImageGeneratorMetadata imagesMetadata = 18;
-  string creatorId = 19;
-  AiRewriterMetadata aiRewriterMetadata = 20;
+  string creatorId = 2;
+  ApprovalStatus approvalStatus = 3;
+  string title = 4;
+  string content = 5;
+  string summarise = 6;
+  string seoBlurb = 7;
+  string headlines = 8;
+  string shortTitles = 9;
+  string keywords = 10;
+  string tweets = 11;
+  repeated ImageGeneratorMetadata imagesMetadata = 12;
+  repeated string imageKeywords = 13;
+  google.protobuf.Timestamp created = 14;
+  google.protobuf.Timestamp updated = 15;
+  ArticleMetadata metadata = 16;
+  optional string outline = 17;
+  optional string properNames = 18;
+  optional string facts = 19;
+  optional string imageUrl = 20;
   optional Editor claimedEditor = 21;
+  AiRewriterMetadata aiRewriterMetadata = 22;
 }
 
 message ArticleMetadata {
