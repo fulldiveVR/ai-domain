@@ -31,7 +31,8 @@ message Article {
 
 message ArticleMetadata {
   string sourceId = 1;
-  OriginalArticleMetadata origin = 2;
+  string flowId = 2;
+  OriginalArticleMetadata origin = 3;
 }
 
 enum ApprovalStatus {
