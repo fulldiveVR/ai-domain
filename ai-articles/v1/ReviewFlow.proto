@@ -35,20 +35,21 @@ message ReviewFlowAiData {
 
 enum ReviewFlowAiRequestType {
   facts = 0;
-  properNames = 1;
-  rewrite = 2;
-  keywords = 3;
-  seoBlurb = 4;
-  tweets = 5;
-  summarise = 6;
-  headlines = 7;
-  shortTitles = 8;
-  extractArticles = 9;
-  imageKeywordsGenerate = 10;
-  imageKeywordsTranslate = 11;
-  imageKeywordsSynonyms = 12;
-  outline = 13;
-  grammar = 14;
+  factsChecking = 1;
+  properNames = 2;
+  rewrite = 3;
+  keywords = 4;
+  seoBlurb = 5;
+  tweets = 6;
+  summarise = 7;
+  headlines = 8;
+  shortTitles = 9;
+  extractArticles = 10;
+  imageKeywordsGenerate = 11;
+  imageKeywordsTranslate = 12;
+  imageKeywordsSynonyms = 13;
+  outline = 14;
+  grammar = 15;
 }
 
 message ReviewFlowAiRequest {
