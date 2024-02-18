@@ -27,6 +27,7 @@ message Article {
   optional string imageUrl = 20;
   optional Editor claimedEditor = 21;
   AiRewriterMetadata aiRewriterMetadata = 22;
+  repeated ChatHistoryItem chatHistory = 23;
 }
 
 message ArticleMetadata {
@@ -70,4 +71,9 @@ enum ImageGeneratorType {
 message Editor {
   string id = 1;
   optional string email = 2;
+}
+
+message ChatHistoryItem {
+  string chatId = 1;
+  optional string threadId = 2;
 }

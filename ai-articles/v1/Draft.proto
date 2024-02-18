@@ -17,6 +17,7 @@ message Draft {
   ArticleMetadata metadata = 9;
   string creatorId = 10;
   optional Editor claimedEditor = 11;
+  repeated ChatHistoryItem chatHistory = 12;
 }
 
 enum DraftStatus {
