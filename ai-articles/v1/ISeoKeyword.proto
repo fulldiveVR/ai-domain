@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+import "google/protobuf/timestamp.proto";
+
+message ISeoKeyword {
+  string id = 1;
+  int32 volume = 2;
+  int32 m1 = 3;
+  int32 m1_month = 4;
+  int32 m1_year = 5;
+  int32 m2 = 6;
+  int32 m2_month = 7;
+  int32 m2_year = 8;
+  int32 m3 = 9;
+  int32 m3_month = 10;
+  int32 m3_year = 11;
+  int32 m4 = 12;
+  int32 m4_month = 13;
+  int32 m4_year = 14;
+  int32 m5 = 15;
+  int32 m5_month = 16;
+  int32 m5_year = 17;
+  int32 m6 = 18;
+  int32 m6_month = 19;
+  int32 m6_year = 20;
+  int32 m7 = 21;
+  int32 m7_month = 22;
+  int32 m7_year = 23;
+  int32 m8 = 24;
+  int32 m8_month = 25;
+  int32 m8_year = 26;
+  int32 m9 = 27;
+  int32 m9_month = 28;
+  int32 m9_year = 29;
+  int32 m10 = 30;
+  int32 m10_month = 31;
+  int32 m10_year = 32;
+  int32 m11 = 33;
+  int32 m11_month = 34;
+  int32 m11_year = 35;
+  int32 m12 = 36;
+  int32 m12_month = 37;
+  int32 m12_year = 38;
+  int32 trend = 39;
+  int32 cpc = 40;
+  int32 cmp = 41;
+  google.protobuf.Timestamp created = 42;
+  google.protobuf.Timestamp updated = 43;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+import "google/protobuf/timestamp.proto";
+
+message ISeoKeywordSuggestion {
+  string id = 1;
+  repeated string keywordIds = 2;
+  google.protobuf.Timestamp created = 3;
+  google.protobuf.Timestamp updated = 4;
+}

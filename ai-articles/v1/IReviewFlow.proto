@@ -5,32 +5,31 @@ package ai_wayz;
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
-message ReviewFlow {
+message IReviewFlow {
   string id = 1;
   string title = 2;
   string creatorId = 3;
-  map<string, string> aiPrompts = 4;
-  repeated ReviewFlowAiRequest aiRequests = 5;
-  google.protobuf.Timestamp created = 6;
-  ReviewFlowOriginalNewsData originalNewsData = 7;
-  ReviewFlowAiData aiData = 8;
-  ReviewFlowRewriteData rewriteData = 9;
+  repeated IReviewFlowAiRequest aiRequests = 4;
+  google.protobuf.Timestamp created = 5;
+  IReviewFlowOriginalNewsData originalNewsData = 6;
+  IReviewFlowAiData aiData = 7;
+  IReviewFlowRewriteData rewriteData = 8;
 }
 
-message ReviewFlowAiData {
-    ReviewFlowAiRequest facts = 1;
-    ReviewFlowAiRequest properNames = 2;
-    ReviewFlowAiRequest rewrite = 3;
-    ReviewFlowAiRequest keywords = 4;
-    ReviewFlowAiRequest seoBlurb = 5;
-    ReviewFlowAiRequest tweets = 6;
-    ReviewFlowAiRequest summarise = 7;
-    ReviewFlowAiRequest headlines = 8;
-    ReviewFlowAiRequest shortTitles = 9;
-    ReviewFlowAiRequest extractArticles = 10;
-    ReviewFlowAiRequest imageKeywordsGenerate = 11;
-    ReviewFlowAiRequest imageKeywordsTranslate = 12;
-    ReviewFlowAiRequest imageKeywordsSynonyms = 13;
+message IReviewFlowAiData {
+    IReviewFlowAiRequest facts = 1;
+    IReviewFlowAiRequest properNames = 2;
+    IReviewFlowAiRequest rewrite = 3;
+    IReviewFlowAiRequest keywords = 4;
+    IReviewFlowAiRequest seoBlurb = 5;
+    IReviewFlowAiRequest tweets = 6;
+    IReviewFlowAiRequest summarise = 7;
+    IReviewFlowAiRequest headlines = 8;
+    IReviewFlowAiRequest shortTitles = 9;
+    IReviewFlowAiRequest extractArticles = 10;
+    IReviewFlowAiRequest imageKeywordsGenerate = 11;
+    IReviewFlowAiRequest imageKeywordsTranslate = 12;
+    IReviewFlowAiRequest imageKeywordsSynonyms = 13;
 }
 
 enum ReviewFlowAiRequestType {
@@ -52,7 +51,7 @@ enum ReviewFlowAiRequestType {
   grammar = 15;
 }
 
-message ReviewFlowAiRequest {
+message IReviewFlowAiRequest {
   ReviewFlowAiRequestType id = 1;
   string title = 2;
   string systemContent = 3;
@@ -64,7 +63,7 @@ message ReviewFlowAiRequest {
   optional bool isNeeded = 9;
 }
 
-message ReviewFlowOriginalNewsData {
+message IReviewFlowOriginalNewsData {
   int32 minLength = 1;
   repeated string excludedDomains = 3;
 }
@@ -74,7 +73,7 @@ enum ReviewFlowGoogleTrendsGeo {
   TW = 1;
 }
 
-message ReviewFlowRewriteData {
+message IReviewFlowRewriteData {
   repeated string defaultKeywords = 1;
   ReviewFlowGoogleTrendsGeo googleTrendsGeo = 2;
 }

@@ -4,15 +4,15 @@ package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
 
-message Article {
+message IArticle {
   string id = 1;
   string creatorId = 2;
-  ApprovalStatus approvalStatus = 3;
-  repeated ImageGeneratorMetadata imagesMetadata = 4;
+  Status status = 3;
+  repeated IImageGeneratorMetadata imagesMetadata = 4;
   repeated string imageKeywords = 5;
   google.protobuf.Timestamp created = 6;
   google.protobuf.Timestamp updated = 7;
-  ArticleMetadata metadata  = 8;
+  IArticleMetadata metadata  = 8;
   optional string title = 9;
   optional string content = 10;
   optional string summarise = 11;
@@ -25,24 +25,26 @@ message Article {
   optional string properNames = 18;
   optional string facts = 19;
   optional string imageUrl = 20;
-  optional Editor claimedEditor = 21;
-  AiRewriterMetadata aiRewriterMetadata = 22;
-  repeated ChatHistoryItem chatHistory = 23;
+  optional IEditor claimedEditor = 21;
+  optional IAiRewriterMetadata aiRewriterMetadata = 22;
+  repeated IChatHistoryItem chatHistory = 23;
 }
 
-message ArticleMetadata {
+message IArticleMetadata {
   string sourceId = 1;
   string flowId = 2;
-  OriginalArticleMetadata origin = 3;
+  IOriginalArticleMetadata origin = 3;
 }
 
-enum ApprovalStatus {
-  Pending = 0;
-  Approved = 1;
-  Rejected = 2;
+enum Status {
+  Scraped = 0;
+  Generating = 1;
+  Pending = 3;
+  Approved = 4;
+  Rejected = 5;
 }
 
-message OriginalArticleMetadata {
+message IOriginalArticleMetadata {
   google.protobuf.Timestamp pubDate = 1;
   string content = 2;
   optional string title = 3;
@@ -51,12 +53,12 @@ message OriginalArticleMetadata {
   repeated string contentImageUrls = 6;
 }
 
-message AiRewriterMetadata {
+message IAiRewriterMetadata {
   string model = 1;
   int32 tokensSpend = 2;
 }
 
-message ImageGeneratorMetadata {
+message IImageGeneratorMetadata {
   ImageGeneratorType type = 1;
   bool isGenerating = 2;
   optional string collageUrl = 3;
@@ -68,12 +70,12 @@ enum ImageGeneratorType {
   Realistic = 1;
 }
 
-message Editor {
+message IEditor {
   string id = 1;
   optional string email = 2;
 }
 
-message ChatHistoryItem {
+message IChatHistoryItem {
   string chatId = 1;
   optional string threadId = 2;
 }

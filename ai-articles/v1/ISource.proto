@@ -5,7 +5,7 @@ package ai_wayz;
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
-message Source {
+message ISource {
   string id = 1;
   string title = 2;
   string reviewFlowId = 3;
