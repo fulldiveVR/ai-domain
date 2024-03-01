@@ -12,7 +12,6 @@ message IReviewFlow {
   repeated IReviewFlowAiRequest aiRequests = 4;
   google.protobuf.Timestamp created = 5;
   IReviewFlowOriginalNewsData originalNewsData = 6;
-  IReviewFlowRewriteData rewriteData = 7;
 }
 
 enum ReviewFlowAiRequestType {
@@ -49,14 +48,4 @@ message IReviewFlowAiRequest {
 message IReviewFlowOriginalNewsData {
   int32 minLength = 1;
   repeated string excludedDomains = 3;
-}
-
-enum ReviewFlowGoogleTrendsGeo {
-  US = 0;
-  TW = 1;
-}
-
-message IReviewFlowRewriteData {
-  repeated string defaultKeywords = 1;
-  ReviewFlowGoogleTrendsGeo googleTrendsGeo = 2;
 }
