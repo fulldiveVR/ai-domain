@@ -12,30 +12,13 @@ message IReviewFlow {
   repeated IReviewFlowAiRequest aiRequests = 4;
   google.protobuf.Timestamp created = 5;
   IReviewFlowOriginalNewsData originalNewsData = 6;
-  IReviewFlowAiData aiData = 7;
-  IReviewFlowRewriteData rewriteData = 8;
-}
-
-message IReviewFlowAiData {
-    IReviewFlowAiRequest facts = 1;
-    IReviewFlowAiRequest properNames = 2;
-    IReviewFlowAiRequest rewrite = 3;
-    IReviewFlowAiRequest keywords = 4;
-    IReviewFlowAiRequest seoBlurb = 5;
-    IReviewFlowAiRequest tweets = 6;
-    IReviewFlowAiRequest summarise = 7;
-    IReviewFlowAiRequest headlines = 8;
-    IReviewFlowAiRequest shortTitles = 9;
-    IReviewFlowAiRequest extractArticles = 10;
-    IReviewFlowAiRequest imageKeywordsGenerate = 11;
-    IReviewFlowAiRequest imageKeywordsTranslate = 12;
-    IReviewFlowAiRequest imageKeywordsSynonyms = 13;
+  IReviewFlowRewriteData rewriteData = 7;
 }
 
 enum ReviewFlowAiRequestType {
   facts = 0;
-  factsChecking = 1;
-  properNames = 2;
+  properNames = 1;
+  outline = 2;
   rewrite = 3;
   keywords = 4;
   seoBlurb = 5;
@@ -43,12 +26,12 @@ enum ReviewFlowAiRequestType {
   summarise = 7;
   headlines = 8;
   shortTitles = 9;
-  extractArticles = 10;
-  imageKeywordsGenerate = 11;
-  imageKeywordsTranslate = 12;
-  imageKeywordsSynonyms = 13;
-  outline = 14;
-  grammar = 15;
+  grammar = 10;
+  extractArticles = 11;
+  factsChecking = 12;
+  imageKeywordsGenerate = 13;
+  imageKeywordsTranslate = 14;
+  imageKeywordsSynonyms = 15;
 }
 
 message IReviewFlowAiRequest {
