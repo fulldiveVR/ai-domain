@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+import "google/protobuf/timestamp.proto";
+
+// Article emitter
+
+message IArticleFoundMessage {
+  string sourceId = 1;
+  IArticleFoundMetadata metadata = 2;
+}
+
+message IArticleFoundMetadata {
+  string url = 1;
+  optional string title = 2;
+  optional string content = 3;
+  optional google.protobuf.Timestamp pubDate = 4;
+}
+
+
+// Readability
+
+message ReadabilityContentFetcherRequestMessage {
+  string url = 1;
+}
+
+message ReadabilityContentFetcherResponseMessage {
+  string content = 1;
+  string title = 2;
+  string author = 3;
+  string image = 4;
+  optional string pubDate = 5;
+}
+
+// Image generator
+
+message GenerateImageRequestMessage {
+  string prompt = 1;
+}
+
+message GenerateImageResponseMessage {
+  string url = 1;
+}
+
+message UpscaleImageRequestMessage {
+  string prompt = 1;
+  int32 index = 2;
+}
+
+message UpscaleImageResponseMessage {
+  string url = 1;
+}
+
+// Youtube video fetcher
+
+message YoutubeVideoFetcherRequestMessage {
+  string url = 1;
+}
+
+message YoutubeVideoFetcherResponseMessage {
+  string videoUrl = 1;
+}
