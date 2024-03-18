@@ -17,20 +17,21 @@ message IReviewFlow {
 enum ReviewFlowAiRequestType {
   facts = 0;
   properNames = 1;
-  outline = 2;
-  rewrite = 3;
-  keywords = 4;
-  seoBlurb = 5;
-  tweets = 6;
-  summarise = 7;
-  headlines = 8;
-  shortTitles = 9;
-  grammar = 10;
-  extractArticles = 11;
-  factsChecking = 12;
-  imageKeywordsGenerate = 13;
-  imageKeywordsTranslate = 14;
-  imageKeywordsSynonyms = 15;
+  mainSeoKeyword = 2;
+  outline = 3;
+  rewrite = 4;
+  keywords = 5;
+  seoBlurb = 6;
+  tweets = 7;
+  summarise = 8;
+  headlines = 9;
+  shortTitles = 10;
+  grammar = 11;
+  extractArticles = 12;
+  factsChecking = 13;
+  imageKeywordsGenerate = 14;
+  imageKeywordsTranslate = 15;
+  imageKeywordsSynonyms = 16;
 }
 
 message IReviewFlowAiRequest {

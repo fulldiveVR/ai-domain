@@ -3,31 +3,34 @@ syntax = "proto3";
 package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 
 message IArticle {
   string id = 1;
   string creatorId = 2;
   Status status = 3;
-  repeated IImageGeneratorMetadata imagesMetadata = 4;
-  repeated string imageKeywords = 5;
-  google.protobuf.Timestamp created = 6;
-  google.protobuf.Timestamp updated = 7;
-  IArticleMetadata metadata  = 8;
-  optional string title = 9;
-  optional string content = 10;
-  optional string summarise = 11;
-  optional string seoBlurb = 12;
-  optional string headlines = 13;
-  optional string shortTitles = 14;
-  optional string keywords = 15;
-  optional string tweets = 16;
-  optional string outline = 17;
-  optional string properNames = 18;
-  optional string facts = 19;
-  optional string imageUrl = 20;
-  optional IEditor claimedEditor = 21;
-  optional IAiRewriterMetadata aiRewriterMetadata = 22;
-  repeated IChatHistoryItem chatHistory = 23;
+  IArticleMetadata metadata = 4;
+  repeated IImageGeneratorMetadata imagesMetadata = 5;
+  repeated string imageKeywords = 6;
+  repeated string seoKeywords = 7;
+  google.protobuf.Timestamp created = 8;
+  google.protobuf.Timestamp updated = 9;
+  google.protobuf.StringValue title = 10;
+  google.protobuf.StringValue content = 11;
+  google.protobuf.StringValue summarise = 12;
+  google.protobuf.StringValue seoBlurb = 13;
+  google.protobuf.StringValue headlines = 14;
+  google.protobuf.StringValue shortTitles = 15;
+  google.protobuf.StringValue keywords = 16;
+  google.protobuf.StringValue tweets = 17;
+  google.protobuf.StringValue outline = 18;
+  google.protobuf.StringValue properNames = 19;
+  google.protobuf.StringValue facts = 20;
+  google.protobuf.StringValue imageUrl = 21;
+  google.protobuf.StringValue mainSeoKeyword = 22;
+  IEditor claimedEditor = 23;
+  IAiRewriterMetadata aiRewriterMetadata = 24;
+  repeated IChatHistoryItem chatHistory = 25;
 }
 
 message IArticleMetadata {
@@ -78,4 +81,30 @@ message IEditor {
 message IChatHistoryItem {
   string chatId = 1;
   optional string threadId = 2;
+}
+
+message IArticleOutput {
+  string id = 1;
+  string creatorId = 2;
+  Status status = 3;
+  repeated string imageUrls = 4;
+  repeated string imageKeywords = 6;
+  repeated string seoKeywords = 7;
+  google.protobuf.Timestamp created = 8;
+  google.protobuf.Timestamp updated = 9;
+  google.protobuf.StringValue title = 10;
+  google.protobuf.StringValue content = 11;
+  google.protobuf.StringValue summarise = 12;
+  google.protobuf.StringValue seoBlurb = 13;
+  google.protobuf.StringValue headlines = 14;
+  google.protobuf.StringValue shortTitles = 15;
+  google.protobuf.StringValue keywords = 16;
+  google.protobuf.StringValue tweets = 17;
+  google.protobuf.StringValue outline = 18;
+  google.protobuf.StringValue properNames = 19;
+  google.protobuf.StringValue facts = 20;
+  google.protobuf.StringValue mainSeoKeyword = 22;
+  google.protobuf.StringValue originalTitle = 23;
+  google.protobuf.StringValue originalContent = 24;
+  IEditor claimedEditor = 25;
 }
