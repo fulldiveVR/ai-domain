@@ -14,3 +14,10 @@ message AutoResearchThread {
   string user_id = 2;
   Status status = 3;
 }
+
+enum AutoResearchThreadMessagePattern {
+  // Reserved for future use, does not emit any messages yet.
+  AUTO_RESEARCH_THREAD_MESSAGE_PATTERN_CREATED = 0;
+  AUTO_RESEARCH_THREAD_MESSAGE_PATTERN_COMPLETED = 1;
+  AUTO_RESEARCH_THREAD_MESSAGE_PATTERN_ERROR = 2;
+}
