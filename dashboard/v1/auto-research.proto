@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package dashboard;
+
+message AutoResearchThread {
+  enum Status {
+    ACTIVE = 0;
+    STOPPED = 1;
+    COMPLETED = 2;
+    ERROR = 3;
+  }
+
+  string id = 1;
+  string user_id = 2;
+  Status status = 3;
+}
