@@ -24,19 +24,17 @@ message IArticle {
   google.protobuf.StringValue keywords = 16;
   google.protobuf.StringValue tweets = 17;
   google.protobuf.StringValue outline = 18;
-  google.protobuf.StringValue properNames = 19;
-  google.protobuf.StringValue facts = 20;
-  google.protobuf.StringValue imageUrl = 21;
-  google.protobuf.StringValue mainSeoKeyword = 22;
-  IEditor claimedEditor = 23;
-  IAiRewriterMetadata aiRewriterMetadata = 24;
-  repeated IChatHistoryItem chatHistory = 25;
+  google.protobuf.StringValue imageUrl = 19;
+  google.protobuf.StringValue mainSeoKeyword = 20;
+  IEditor claimedEditor = 21;
+  IAiRewriterMetadata aiRewriterMetadata = 22;
+  repeated IChatHistoryItem chatHistory = 23;
 }
 
 message IArticleMetadata {
   string sourceId = 1;
   string flowId = 2;
-  IOriginalArticleMetadata origin = 3;
+  repeated IOriginalArticleMetadata originalArticles = 3;
 }
 
 enum Status {
@@ -50,10 +48,12 @@ enum Status {
 message IOriginalArticleMetadata {
   google.protobuf.Timestamp pubDate = 1;
   string content = 2;
-  optional string title = 3;
-  optional string url = 4;
-  optional string imageUrl = 5;
+  google.protobuf.StringValue title = 3;
+  google.protobuf.StringValue url = 4;
+  google.protobuf.StringValue imageUrl = 5;
   repeated string contentImageUrls = 6;
+  google.protobuf.StringValue facts = 7;
+  google.protobuf.StringValue properNames = 8;
 }
 
 message IAiRewriterMetadata {
@@ -90,21 +90,19 @@ message IArticleOutput {
   repeated string imageUrls = 4;
   repeated string imageKeywords = 6;
   repeated string seoKeywords = 7;
-  google.protobuf.Timestamp created = 8;
-  google.protobuf.Timestamp updated = 9;
-  google.protobuf.StringValue title = 10;
-  google.protobuf.StringValue content = 11;
-  google.protobuf.StringValue summarise = 12;
-  google.protobuf.StringValue seoBlurb = 13;
-  google.protobuf.StringValue headlines = 14;
-  google.protobuf.StringValue shortTitles = 15;
-  google.protobuf.StringValue keywords = 16;
-  google.protobuf.StringValue tweets = 17;
-  google.protobuf.StringValue outline = 18;
-  google.protobuf.StringValue properNames = 19;
-  google.protobuf.StringValue facts = 20;
+  google.protobuf.StringValue facts = 8;
+  google.protobuf.StringValue properNames = 9;
+  google.protobuf.Timestamp created = 10;
+  google.protobuf.Timestamp updated = 11;
+  google.protobuf.StringValue title = 12;
+  google.protobuf.StringValue content = 13;
+  google.protobuf.StringValue summarise = 14;
+  google.protobuf.StringValue seoBlurb = 15;
+  google.protobuf.StringValue headlines = 16;
+  google.protobuf.StringValue shortTitles = 17;
+  google.protobuf.StringValue keywords = 18;
+  google.protobuf.StringValue tweets = 19;
+  google.protobuf.StringValue outline = 20;
   google.protobuf.StringValue mainSeoKeyword = 22;
-  google.protobuf.StringValue originalTitle = 23;
-  google.protobuf.StringValue originalContent = 24;
-  IEditor claimedEditor = 25;
+  IEditor claimedEditor = 23;
 }
