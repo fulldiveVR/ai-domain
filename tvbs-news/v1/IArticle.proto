@@ -38,11 +38,13 @@ message IArticleMetadata {
 }
 
 enum Status {
-  Scraped = 0;
-  Generating = 1;
-  Pending = 3;
-  Approved = 4;
-  Rejected = 5;
+  Scraping = 0;
+  Scraped = 1;
+  ScrapeFailed = 2;
+  Generating = 3;
+  Pending = 4;
+  Approved = 5;
+  Rejected = 6;
 }
 
 message IOriginalArticleMetadata {
