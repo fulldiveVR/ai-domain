@@ -26,7 +26,9 @@ enum ReviewFlowAiRequestType {
   summarise = 8;
   headlines = 9;
   shortTitles = 10;
-  grammar = 11;
+  socialTitles = 11;
+  seoTitles = 12;
+  grammar = 13;
   imageKeywordsGenerate = 14;
   imageKeywordsTranslate = 15;
   imageKeywordsSynonyms = 16;
