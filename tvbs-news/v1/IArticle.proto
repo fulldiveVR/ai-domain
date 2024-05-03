@@ -17,7 +17,7 @@ message IArticle {
   repeated string shortTitles = 9;
   repeated string socialTitles = 10;
   repeated string seoTitles = 11;
-  repeated string keywords = 12;
+  google.protobuf.StringValue keywords = 12;
   google.protobuf.Timestamp created = 13;
   google.protobuf.Timestamp updated = 14;
   google.protobuf.StringValue title = 15;
@@ -31,15 +31,16 @@ message IArticle {
   google.protobuf.StringValue outline = 23;
   google.protobuf.StringValue imageUrl = 24;
   google.protobuf.StringValue mainSeoKeyword = 25;
-  IEditor claimedEditor = 26;
-  IAiRewriterMetadata aiRewriterMetadata = 27;
-  repeated IChatHistoryItem chatHistory = 28;
+  google.protobuf.Timestamp techCreatedForDelete = 26;
+  IEditor claimedEditor = 27;
+  IAiRewriterMetadata aiRewriterMetadata = 28;
 }
 
 message IArticleMetadata {
   string sourceId = 1;
   string flowId = 2;
-  repeated IOriginalArticleMetadata originalArticles = 3;
+  string envId = 3;
+  repeated IOriginalArticleMetadata originalArticles = 4;
 }
 
 enum Status {
@@ -85,11 +86,6 @@ message IEditor {
   optional string email = 2;
 }
 
-message IChatHistoryItem {
-  string chatId = 1;
-  optional string threadId = 2;
-}
-
 message IArticleOutput {
   string id = 1;
   string creatorId = 2;
@@ -101,7 +97,7 @@ message IArticleOutput {
   repeated string shortTitles = 8;
   repeated string socialTitles = 9;
   repeated string seoTitles = 10;
-  repeated string keywords = 11;
+  google.protobuf.StringValue keywords = 11;
   google.protobuf.StringValue facts = 12;
   google.protobuf.StringValue properNames = 13;
   google.protobuf.Timestamp created = 14;

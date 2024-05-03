@@ -10,8 +10,14 @@ message IReviewFlow {
   string title = 2;
   string creatorId = 3;
   repeated IReviewFlowAiRequest aiRequests = 4;
-  google.protobuf.Timestamp created = 5;
-  IReviewFlowOriginalNewsData originalNewsData = 6;
+  ReviewFlowStatus status = 5;
+  google.protobuf.Timestamp created = 6;
+  IReviewFlowOriginalNewsData originalNewsData = 7;
+}
+
+enum ReviewFlowStatus {
+  InProgress = 0;
+  Ready = 1;
 }
 
 enum ReviewFlowAiRequestType {

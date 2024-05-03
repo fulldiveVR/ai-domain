@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+import "google/protobuf/timestamp.proto";
+
+message IChatThread {
+    string id = 1;
+    string articleId = 2;
+    string userId = 3;
+    google.protobuf.Timestamp created = 4;
+}
