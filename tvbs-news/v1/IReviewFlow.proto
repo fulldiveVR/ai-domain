@@ -12,7 +12,6 @@ message IReviewFlow {
   repeated IReviewFlowAiRequest aiRequests = 4;
   ReviewFlowStatus status = 5;
   google.protobuf.Timestamp created = 6;
-  IReviewFlowOriginalNewsData originalNewsData = 7;
 }
 
 enum ReviewFlowStatus {
@@ -50,9 +49,4 @@ message IReviewFlowAiRequest {
   optional string modelForLongText = 7;
   optional google.protobuf.Value tools = 8;
   optional bool isNeeded = 9;
-}
-
-message IReviewFlowOriginalNewsData {
-  int32 minLength = 1;
-  repeated string excludedDomains = 3;
 }
