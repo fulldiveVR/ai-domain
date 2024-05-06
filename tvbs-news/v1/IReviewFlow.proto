@@ -17,6 +17,7 @@ message IReviewFlow {
 enum ReviewFlowStatus {
   InProgress = 0;
   Ready = 1;
+  IsDefault = 2;
 }
 
 enum ReviewFlowAiRequestType {
