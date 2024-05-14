@@ -5,6 +5,7 @@ message ScheduledPost {
   message Attachment {
     enum Type {
       IMAGE = 0;
+      VIDEO = 1;
     }
 
     string id = 1;
