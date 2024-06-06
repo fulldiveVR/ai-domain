@@ -12,6 +12,7 @@ message IReviewFlow {
   repeated IReviewFlowAiRequest aiRequests = 4;
   ReviewFlowStatus status = 5;
   google.protobuf.Timestamp created = 6;
+  bool isFastPass = 7;
 }
 
 enum ReviewFlowStatus {
