@@ -16,6 +16,8 @@ message ApproveRequest {
   optional string image_url = 7;
 
   google.protobuf.Timestamp created_at = 8;
+
+  optional string team = 9;
 }
 
 message ApproveResult {
@@ -25,6 +27,13 @@ message ApproveResult {
 
   string executionId = 4;
   string stepId = 5;
+
+  ApproveUser user = 6;
+}
+
+message ApproveUser {
+  string id = 1;
+  string name = 2;
 }
 
 enum ApproveStatus {
