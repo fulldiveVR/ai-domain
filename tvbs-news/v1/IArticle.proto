@@ -4,6 +4,7 @@ package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
+import "IReviewFlow.proto";
 
 message IArticle {
   string id = 1;
@@ -34,6 +35,7 @@ message IArticle {
   google.protobuf.Timestamp techCreatedForDelete = 26;
   IEditor claimedEditor = 27;
   IAiRewriterMetadata aiRewriterMetadata = 28;
+  repeated IGenerateContentProcess generationProcesses = 29;
 }
 
 message IArticleMetadata {
@@ -41,6 +43,19 @@ message IArticleMetadata {
   string flowId = 2;
   string envId = 3;
   repeated IOriginalArticleMetadata originalArticles = 4;
+}
+
+message IGenerateContentProcess {
+    ReviewFlowAiRequestType requestType = 1;
+    GenerateStatus status = 2;
+    repeated google.protobuf.StringValue contents = 3;
+}
+
+enum GenerateStatus {
+  Idle = 0;
+  Processing = 1;
+  Finished = 2;
+  NotFinished = 3;
 }
 
 enum Status {
