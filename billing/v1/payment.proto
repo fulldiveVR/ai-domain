@@ -44,6 +44,7 @@ message Payment {
 
 // The message pattern for payment events.
 // Topic: billing.payment
+// Payload: Payment
 enum PaymentMessagePattern {
   // Reserved for future use, does not emit any messages yet.
   PAYMENT_MESSAGE_PATTERN_CREATED = 0; 

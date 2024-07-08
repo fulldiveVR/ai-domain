@@ -50,6 +50,7 @@ message Subscription {
 
 // The message pattern for subscription events.
 // Topic: billing.subscription
+// Payload: Subscription
 enum SubscriptionMessagePattern {
   SUBSCRIPTION_MESSAGE_PATTERN_CREATED = 0;
   SUBSCRIPTION_MESSAGE_PATTERN_UPDATED = 1;
@@ -57,10 +58,14 @@ enum SubscriptionMessagePattern {
 
 // The message pattern for subscription notification events.
 // Topic: billing.subscription.notification
+// Payload: Subscription
 enum SubscriptionNotificationMessagePattern {
   // Emits when the active trial period ends in one day and the subscription will be renewed by charging the user.
   SUBSCRIPTION_NOTIFICATION_MESSAGE_PATTERN_TRIAL_ENDS_IN_ONE_DAY = 0;
 
   // Emits when the active trial period ends in two days and the subscription will be renewed by charging the user.
   SUBSCRIPTION_NOTIFICATION_MESSAGE_PATTERN_TRIAL_ENDS_IN_TWO_DAYS = 1;
+
+  // Emits when the subscription renewal payment failed and the subscription will be canceled.
+  SUBSCRIPTION_NOTIFICATION_MESSAGE_PATTERN_RENEWAL_FAILED = 2;
 }
