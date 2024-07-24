@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package ai_wayz;
 
-import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
 message IReviewFlow {
@@ -13,6 +12,11 @@ message IReviewFlow {
   ReviewFlowStatus status = 5;
   google.protobuf.Timestamp created = 6;
   bool isFastPass = 7;
+}
+
+message IKnowledgeBaseItem {
+  string id = 1;
+  string userId = 2;
 }
 
 enum ReviewFlowStatus {
@@ -36,19 +40,37 @@ enum ReviewFlowAiRequestType {
   socialTitles = 11;
   seoTitles = 12;
   grammar = 13;
-  imageKeywordsGenerate = 14;
-  imageKeywordsTranslate = 15;
-  imageKeywordsSynonyms = 16;
+  imageOCR = 14;
+  imageKeywordsGenerate = 15;
+  imageKeywordsTranslate = 16;
+  imageKeywordsSynonyms = 17;
+}
+
+message IAiRequestFromAutopilot {
+  string webhookPath = 1;
+  string prompt = 2;
+  optional string webhookToken = 5;
+}
+
+message IAiRequestFromSeanews {
+  string systemContent = 3;
+  string userContent = 4;
+  float temperature = 5;
+  string model = 6;
+  optional IKnowledgeBaseItem document = 10;
+}
+
+enum IAiRequestType {
+  autopilot = 0;
+  seanews = 1;
 }
 
 message IReviewFlowAiRequest {
   ReviewFlowAiRequestType id = 1;
   string title = 2;
-  string systemContent = 3;
-  string userContent = 4;
-  int32 temperature = 5;
-  string model = 6;
-  optional string modelForLongText = 7;
-  optional google.protobuf.Value tools = 8;
-  optional bool isNeeded = 9;
+  IAiRequestType type = 3;
+  repeated IAiRequestType availableFlowTypes = 4;
+  optional IAiRequestFromSeanews flowFromSeanews = 5;
+  optional IAiRequestFromAutopilot flowFromAutopilot = 6;
+  optional bool isNeeded = 7;
 }
