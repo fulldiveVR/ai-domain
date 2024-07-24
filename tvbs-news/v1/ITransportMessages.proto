@@ -23,6 +23,7 @@ message IArticleFoundMetadata {
 
 message ReadabilityContentFetcherRequestMessage {
   string url = 1;
+  optional string inputHtml = 2;
 }
 
 message ReadabilityContentFetcherResponseMessage {
