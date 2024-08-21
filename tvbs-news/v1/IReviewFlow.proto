@@ -8,10 +8,11 @@ message IReviewFlow {
   string id = 1;
   string title = 2;
   string creatorId = 3;
-  repeated IReviewFlowAiRequest aiRequests = 4;
-  ReviewFlowStatus status = 5;
-  google.protobuf.Timestamp created = 6;
-  bool isFastPass = 7;
+  string envId = 4;
+  repeated IReviewFlowAiRequest aiRequests = 5;
+  ReviewFlowStatus status = 6;
+  google.protobuf.Timestamp created = 7;
+  bool isFastPass = 8;
 }
 
 message IKnowledgeBaseItem {
@@ -48,8 +49,7 @@ enum ReviewFlowAiRequestType {
 
 message IAiRequestFromAutopilot {
   string webhookPath = 1;
-  string prompt = 2;
-  optional string webhookToken = 5;
+  optional string prompt = 2;
 }
 
 message IAiRequestFromSeanews {

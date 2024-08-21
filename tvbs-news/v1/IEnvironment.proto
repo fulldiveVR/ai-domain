@@ -8,8 +8,8 @@ message IEnvironment {
   string id = 1;
   string title = 2;
   string uiDashboardName = 3;
-  repeated string sourceIds = 4;
-  repeated string reviewFlowIds = 5;
+  string rootFolderId = 4;
+  repeated string sourceIds = 5;
   repeated string rssPaths = 6;
   string creatorId = 7;
   google.protobuf.Timestamp created = 8;

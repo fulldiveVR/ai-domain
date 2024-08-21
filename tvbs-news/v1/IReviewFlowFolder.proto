@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package ai_wayz;
+
+import "google/protobuf/timestamp.proto";
+
+message IReviewFlowFolder {
+  string id = 1;
+  string title = 2;
+  repeated string reviewFlowIds = 3;
+  google.protobuf.Timestamp created = 4;
+  google.protobuf.Timestamp updated = 5;
+  optional string parentId = 6;
+}
