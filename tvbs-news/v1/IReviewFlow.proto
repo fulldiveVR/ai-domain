@@ -45,6 +45,7 @@ enum ReviewFlowAiRequestType {
   imageKeywordsGenerate = 15;
   imageKeywordsTranslate = 16;
   imageKeywordsSynonyms = 17;
+  imageAiGeneration = 18;
 }
 
 message IAiRequestFromAutopilot {
