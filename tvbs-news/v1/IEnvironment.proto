@@ -7,12 +7,13 @@ import "google/protobuf/timestamp.proto";
 message IEnvironment {
   string id = 1;
   string title = 2;
-  string uiDashboardName = 3;
-  string rootFolderId = 4;
-  repeated string sourceIds = 5;
-  repeated string rssPaths = 6;
-  string creatorId = 7;
-  google.protobuf.Timestamp created = 8;
-  google.protobuf.Timestamp updated = 9;
-  optional string sourceIdManual = 10;
+  string teamId = 3;
+  string organizationId = 4;
+  string rootFolderId = 5;
+  repeated string sourceIds = 6;
+  repeated string rssPaths = 7;
+  string creatorId = 8;
+  google.protobuf.Timestamp created = 9;
+  google.protobuf.Timestamp updated = 10;
+  optional string sourceIdManual = 11;
 }
