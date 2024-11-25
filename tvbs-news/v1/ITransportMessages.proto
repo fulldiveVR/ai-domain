@@ -3,6 +3,7 @@ syntax = "proto3";
 package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
+import "User.proto";
 
 // Article emitter
 
@@ -24,13 +25,15 @@ message IArticleFoundMetadata {
 message ReadabilityContentFetcherRequestMessage {
   string url = 1;
   optional string inputHtml = 2;
+  IUser user = 3;
+  IOrgRole orgRole = 4;
 }
 
 message ReadabilityContentFetcherResponseMessage {
   string content = 1;
   string title = 2;
-  string author = 3;
-  string image = 4;
+  optional string author = 3;
+  optional string image = 4;
   optional string pubDate = 5;
 }
 
@@ -57,6 +60,8 @@ message UpscaleImageResponseMessage {
 
 message YoutubeVideoFetcherRequestMessage {
   string url = 1;
+  IUser user = 2;
+  IOrgRole orgRole = 3;
 }
 
 message YoutubeVideoFetcherResponseMessage {
