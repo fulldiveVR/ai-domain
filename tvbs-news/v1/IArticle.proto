@@ -77,6 +77,7 @@ message IOriginalArticleMetadata {
   repeated string contentImageUrls = 6;
   google.protobuf.StringValue facts = 7;
   google.protobuf.StringValue properNames = 8;
+  optional string scrapeError = 9;
 }
 
 message IAiRewriterMetadata {
