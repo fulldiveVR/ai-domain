@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package ai_wayz_entity;
+
+message IEntity {
+    string id = 1;
+    string title = 2;
+    IEntityOwner owner = 3;
+    repeated ITeamPermission teamPermissions = 4;
+}
+
+message IEntityOwner {
+    EntityOwnerType type = 1;
+    string id = 2;
+}
+
+enum EntityOwnerType {
+    user = 0;
+    organization = 1;
+}
+
+enum EntityType {
+    assistant = 0;
+    library = 1;
+    flow = 2;
+}
+
+message ITeamPermission {
+    string team = 1;
+    PermissionLevel permission = 2;
+}
+
+enum PermissionLevel {
+    read = 0;
+    write = 1;
+    admin = 2;
+}
