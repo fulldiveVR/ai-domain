@@ -13,12 +13,39 @@ message IUser {
   string organization = 7;
   repeated string teams = 8;
   repeated IOrgRole orgRoles = 9;
+  repeated IOrganizationRole organizationRoles = 10;
+  repeated ITeamRole teamRoles = 11;
 }
+
+// old mechanism
 
 message IOrgRole {
   string orgId = 1;
   IUserRole role = 2;
   string team = 3;
+}
+
+// new mechanism
+
+message IOrganizationRole {
+  string org_id = 1;
+  IOrganizationRoleType role = 2;
+}
+
+enum IOrganizationRoleType {
+  owner = 0;
+  org_member = 1;
+}
+
+message ITeamRole {
+  string orgId = 1;
+  string team = 2;
+  ITeamRoleType role = 3;
+}
+
+enum ITeamRoleType {
+  team_member = 0;
+  maintainer = 1;
 }
 
 message IProvider {
