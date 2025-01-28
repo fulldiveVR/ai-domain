@@ -6,7 +6,8 @@ message IEntity {
     string id = 1;
     string title = 2;
     IEntityOwner owner = 3;
-    repeated ITeamPermission teamPermissions = 4;
+    EntityType type = 4;
+    repeated ITeamPermission teamPermissions = 5;
 }
 
 message IEntityOwner {
