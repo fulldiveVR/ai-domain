@@ -33,7 +33,7 @@ message IOrganizationRole {
 }
 
 enum IOrganizationRoleType {
-  owner = 0;
+  org_owner = 0;
   org_member = 1;
 }
 
@@ -45,7 +45,7 @@ message ITeamRole {
 
 enum ITeamRoleType {
   team_member = 0;
-  maintainer = 1;
+  team_maintainer = 1;
 }
 
 message IProvider {
