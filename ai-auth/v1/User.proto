@@ -28,7 +28,7 @@ message IOrgRole {
 // new mechanism
 
 message IOrganizationRole {
-  string org_id = 1;
+  string orgId = 1;
   IOrganizationRoleType role = 2;
 }
 
