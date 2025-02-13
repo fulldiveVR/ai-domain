@@ -54,18 +54,31 @@ message IAiModelMetadata {
     IOpenRouterMetadata openrouter = 2;
 }
 
+message IFunction {
+    string name = 1;
+    string description = 2;
+    google.protobuf.Struct parameters = 3;
+    optional string strict = 4;
+}
+
+message ITool {
+    string type = 1;
+    IFunction function = 2;
+}
+
 message IAiModel {
-  string id = 1;
-  string name = 2;
-  Mode mode = 3;
-  Provider provider = 4;
-  IAiModality modality = 5;
-  IAiModelPrice price = 6;
-  google.protobuf.StringValue title = 7;
-  google.protobuf.StringValue description = 8;
-  google.protobuf.StringValue iconUrl = 9;
-  IContextLength contextLength = 10;
-  IAiModelMetadata metadata = 11;
+    string id = 1;
+    string name = 2;
+    Mode mode = 3;
+    Provider provider = 4;
+    IAiModality modality = 5;
+    IAiModelPrice price = 6;
+    google.protobuf.StringValue title = 7;
+    google.protobuf.StringValue description = 8;
+    google.protobuf.StringValue iconUrl = 9;
+    IContextLength contextLength = 10;
+    IAiModelMetadata metadata = 11;
+    repeated ITool tools = 12;
 }
 
 message IOpenRouterMetadata {
