@@ -68,4 +68,7 @@ enum SubscriptionNotificationMessagePattern {
 
   // Emits when the subscription renewal payment failed and the subscription will be canceled.
   SUBSCRIPTION_NOTIFICATION_MESSAGE_PATTERN_RENEWAL_FAILED = 2;
+
+  // Emits when the subscription is canceled.
+  SUBSCRIPTION_NOTIFICATION_MESSAGE_PATTERN_CANCELED = 3;
 }
