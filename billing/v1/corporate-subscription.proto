@@ -1,0 +1,18 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+package billing;
+
+import "subscription.proto";
+import "dashboard.proto";
+
+message CorporateSubscription {
+  string id = 1;
+  string initiator_email = 2;
+  string domain = 3;
+  DashboardSubscriptionType subscription_type = 4;
+  SubscriptionStatus status = 5;
+  int32 duration_days = 6;
+  google.protobuf.Timestamp created = 7;
+  google.protobuf.Timestamp updated = 8;
+}
