@@ -13,6 +13,6 @@ message CorporateSubscription {
   DashboardSubscriptionType subscription_type = 4;
   SubscriptionStatus status = 5;
   int32 duration_days = 6;
-  google.protobuf.Timestamp created = 7;
-  google.protobuf.Timestamp updated = 8;
+  google.protobuf.Timestamp expires = 7;
+  google.protobuf.Timestamp created = 8;
 }
