@@ -3,6 +3,7 @@ syntax = "proto3";
 package ai_wayz;
 
 import "google/protobuf/timestamp.proto";
+import "IAuth.proto";
 import "User.proto";
 
 // Article emitter
@@ -26,7 +27,7 @@ message ReadabilityContentFetcherRequestMessage {
   string url = 1;
   optional string inputHtml = 2;
   IUser user = 3;
-  IOrgRole orgRole = 4;
+  IOrgTeam orgTeam = 4;
 }
 
 message ReadabilityContentFetcherResponseMessage {
@@ -61,7 +62,7 @@ message UpscaleImageResponseMessage {
 message YoutubeVideoFetcherRequestMessage {
   string url = 1;
   IUser user = 2;
-  IOrgRole orgRole = 3;
+  IOrgTeam orgTeam = 3;
 }
 
 message YoutubeVideoFetcherResponseMessage {

@@ -8,13 +8,15 @@ import "google/protobuf/timestamp.proto";
 message ISource {
   string id = 1;
   string title = 2;
-  string reviewFlowId = 3;
-  string creatorId = 4;
-  SourceType type = 5;
-  google.protobuf.Value data = 6;
-  google.protobuf.Timestamp created = 7;
-  google.protobuf.Timestamp updated = 8;
-  bool needAutoProcessing = 9;
+  string orgId = 3;
+  string teamId = 4;
+  string reviewFlowId = 5;
+  string creatorId = 6;
+  SourceType type = 7;
+  google.protobuf.Value data = 8;
+  google.protobuf.Timestamp created = 9;
+  google.protobuf.Timestamp updated = 10;
+  bool needAutoProcessing = 11;
 }
 
 enum SourceType {

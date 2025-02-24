@@ -9,10 +9,12 @@ message IReviewFlow {
   string title = 2;
   string creatorId = 3;
   string envId = 4;
-  repeated IReviewFlowAiRequest aiRequests = 5;
-  ReviewFlowStatus status = 6;
-  google.protobuf.Timestamp created = 7;
-  bool isFastPass = 8;
+  string orgId = 5;
+  string teamId = 6;
+  repeated IReviewFlowAiRequest aiRequests = 7;
+  ReviewFlowStatus status = 8;
+  google.protobuf.Timestamp created = 9;
+  bool isFastPass = 10;
 }
 
 message IKnowledgeBaseItem {

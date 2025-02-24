@@ -7,8 +7,10 @@ import "google/protobuf/timestamp.proto";
 message IReviewFlowFolder {
   string id = 1;
   string title = 2;
-  repeated string reviewFlowIds = 3;
-  google.protobuf.Timestamp created = 4;
-  google.protobuf.Timestamp updated = 5;
-  optional string parentId = 6;
+  string orgId = 3;
+  string teamId = 4;
+  repeated string reviewFlowIds = 5;
+  google.protobuf.Timestamp created = 6;
+  google.protobuf.Timestamp updated = 7;
+  optional string parentId = 8;
 }
