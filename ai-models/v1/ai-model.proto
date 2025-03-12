@@ -4,6 +4,7 @@ package ai_wayz;
 
 import "google/protobuf/struct.proto";
 import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
 
 enum Mode {
     generic = 0;
@@ -69,16 +70,18 @@ message ITool {
 message IAiModel {
     string id = 1;
     string name = 2;
-    Mode mode = 3;
-    Provider provider = 4;
-    IAiModality modality = 5;
-    IAiModelPrice price = 6;
-    google.protobuf.StringValue title = 7;
-    google.protobuf.StringValue description = 8;
-    google.protobuf.StringValue iconUrl = 9;
-    IContextLength contextLength = 10;
-    IAiModelMetadata metadata = 11;
-    repeated ITool tools = 12;
+    google.protobuf.Timestamp created = 3;
+    google.protobuf.Timestamp updated = 4;
+    Mode mode = 5;
+    Provider provider = 6;
+    IAiModality modality = 7;
+    IAiModelPrice price = 8;
+    google.protobuf.StringValue title = 9;
+    google.protobuf.StringValue description = 10;
+    google.protobuf.StringValue iconUrl = 11;
+    IContextLength contextLength = 12;
+    IAiModelMetadata metadata = 13;
+    repeated ITool tools = 14;
 }
 
 message IOpenRouterMetadata {
