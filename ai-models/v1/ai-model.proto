@@ -101,7 +101,7 @@ message IReplicateCollection {
 message IReplicateMetadata {
     string owner = 1;
     string version = 2;
-    google.protobuf.Struct schemas = 3;
+    google.protobuf.StringValue schemas = 3;
     repeated IReplicateCollection collections = 4;
     IReplicateDefaultExample defaultExample = 5;
 }
