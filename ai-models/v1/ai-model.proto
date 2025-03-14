@@ -6,19 +6,16 @@ import "google/protobuf/struct.proto";
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 
-enum Mode {
-    generic = 0;
-    reasoning = 1;
+enum ModalityType {
+    text = 0;
+    image = 1;
+    audio = 2;
+    video = 3;
 }
 
-enum IAiModality {
-    unknown = 0;
-    textToText = 1;
-    textImageToText = 2;
-    imageToText = 3;
-    textToImage = 4;
-    textToAudio = 5;
-    audioToText = 6;
+message IAiModality {
+    repeated ModalityType input = 1;
+    repeated ModalityType output = 2;
 }
 
 enum Unit {
@@ -44,15 +41,21 @@ enum Provider {
     anthropic = 3;
 }
 
+enum SupportedParameter {
+    structuredOutputs = 0;
+    tools = 1;
+    responseFormat = 2;
+    reasoning = 3;
+}
+
 message IContextLength {
-    google.protobuf.Int32Value input = 1;
-    google.protobuf.Int32Value output = 2;
+    google.protobuf.Int32Value output = 1;
+    google.protobuf.Int32Value outputThinking = 2;
     google.protobuf.Int32Value total = 3;
 }
 
 message IAiModelMetadata {
     IReplicateMetadata replicate = 1;
-    IOpenRouterMetadata openrouter = 2;
 }
 
 message IFunction {
@@ -70,22 +73,18 @@ message ITool {
 message IAiModel {
     string id = 1;
     string name = 2;
-    google.protobuf.Timestamp created = 3;
-    google.protobuf.Timestamp updated = 4;
-    Mode mode = 5;
-    Provider provider = 6;
-    IAiModality modality = 7;
-    IAiModelPrice price = 8;
-    google.protobuf.StringValue title = 9;
-    google.protobuf.StringValue description = 10;
-    google.protobuf.StringValue iconUrl = 11;
+    google.protobuf.StringValue title = 3;
+    google.protobuf.StringValue description = 4;
+    google.protobuf.StringValue iconUrl = 5;
+    google.protobuf.Timestamp created = 6;
+    google.protobuf.Timestamp updated = 7;
+    Provider provider = 8;
+    IAiModality modality = 9;
+    IAiModelPrice price = 10;
+    repeated SupportedParameter supportedParameters = 11;
     IContextLength contextLength = 12;
     IAiModelMetadata metadata = 13;
     repeated ITool tools = 14;
-}
-
-message IOpenRouterMetadata {
-    google.protobuf.StringValue tokenizer = 1;
 }
 
 message IReplicateDefaultExample {
