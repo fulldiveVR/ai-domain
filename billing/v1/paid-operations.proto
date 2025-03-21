@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package billing;
+
+message PaidOperation {
+  string generationId = 1;
+  string userEmailOrId = 2;
+  int32 paidOperationsCreditsSpent = 3;
+  string traceId = 4;
+  string name = 5;
+  string model = 6;
+}
+
+message PaidOperationsCredits {
+  string userId = 1;
+  int32 paidOperationsCredits = 2;
+}
