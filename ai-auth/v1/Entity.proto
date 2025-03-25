@@ -26,6 +26,7 @@ enum EntityType {
     flow = 2;
     agent = 3;
     document = 4;
+    aiTeam = 5;
 }
 
 message ITeamPermission {
