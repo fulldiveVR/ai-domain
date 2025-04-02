@@ -1,0 +1,17 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+package billing;
+
+message CreditsSpentOperation {
+  string userEmailOrId = 1;
+  int32 creditsSpent = 2;
+}
+
+message CreditsPayload {
+  string userId = 1;
+  int32 planCredits = 3;
+  int32 purchasedCredits = 4;
+  int32 totalCredits = 5;
+  google.protobuf.Timestamp expiresAt = 7;
+}

@@ -16,6 +16,6 @@ message DashboardProductContent {
   // The total amount of credits available to the user for the period.
   int32 credits = 2;
 
-  // The total amount of paid operations credits available to the user.
-  optional int32 paid_operations_credits = 3;
+  // The total amount of purchased credits available to the user.
+  optional int32 purchased_credits = 3;
 }
