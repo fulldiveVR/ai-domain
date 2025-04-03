@@ -42,10 +42,27 @@ enum Provider {
 }
 
 enum SupportedParameter {
-    structuredOutputs = 0;
-    tools = 1;
-    responseFormat = 2;
-    reasoning = 3;
+    tools = 0;
+    tool_choice = 1;
+    max_tokens = 2;
+    temperature = 3;
+    top_p = 4;
+    stop = 5;
+    frequency_penalty = 6;
+    presence_penalty = 7;
+    repetition_penalty = 8;
+    top_k = 9;
+    min_p = 10;
+    seed = 11;
+    response_format = 12;
+    structured_outputs = 13;
+    logprobs = 14;
+    logit_bias = 15;
+    top_logprobs = 16;
+    reasoning = 17;
+    include_reasoning = 18;
+    web_search_options = 19;
+    top_a = 20;
 }
 
 message IContextLength {
@@ -73,18 +90,18 @@ message ITool {
 message IAiModel {
     string id = 1;
     string name = 2;
-    google.protobuf.StringValue title = 3;
-    google.protobuf.StringValue description = 4;
-    google.protobuf.StringValue iconUrl = 5;
-    google.protobuf.Timestamp created = 6;
-    google.protobuf.Timestamp updated = 7;
-    Provider provider = 8;
-    IAiModality modality = 9;
-    IAiModelPrice price = 10;
-    repeated SupportedParameter supportedParameters = 11;
-    IContextLength contextLength = 12;
-    IAiModelMetadata metadata = 13;
-    repeated ITool tools = 14;
+    repeated SupportedParameter supportedParameters = 3;
+    repeated ITool tools = 4;
+    google.protobuf.StringValue title = 5;
+    google.protobuf.StringValue description = 6;
+    google.protobuf.StringValue iconUrl = 7;
+    google.protobuf.Timestamp created = 8;
+    google.protobuf.Timestamp updated = 9;
+    Provider provider = 10;
+    IAiModality modality = 11;
+    IAiModelPrice price = 12;
+    IContextLength contextLength = 13;
+    IAiModelMetadata metadata = 14;
 }
 
 message IReplicateDefaultExample {
