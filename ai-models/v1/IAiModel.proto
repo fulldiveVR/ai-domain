@@ -11,6 +11,7 @@ enum ModalityType {
     image = 1;
     audio = 2;
     video = 3;
+    file = 4;
 }
 
 message IAiModality {
