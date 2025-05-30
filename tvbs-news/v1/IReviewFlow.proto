@@ -77,3 +77,18 @@ message IReviewFlowAiRequest {
   optional IAiRequestFromAutopilot flowFromAutopilot = 6;
   optional bool isNeeded = 7;
 }
+
+enum ReviewFlowAiRequestParameter {
+  originalContent = 0;
+  originalTitle = 1;
+  outlineContent = 2;
+  factContent = 3;
+  createdContent = 4;
+  createdTitle = 5;
+  selectedKeywords = 6;
+  imageUrl = 7;
+  wordCount = 8;
+  seoKeywords = 9;
+  imageAiGenerationType = 10;
+  currentDay = 11;
+}
