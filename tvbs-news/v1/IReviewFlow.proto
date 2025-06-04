@@ -14,7 +14,8 @@ message IReviewFlow {
   repeated IReviewFlowAiRequest aiRequests = 7;
   ReviewFlowStatus status = 8;
   google.protobuf.Timestamp created = 9;
-  bool isFastPass = 10;
+  google.protobuf.Timestamp updated = 10;
+  bool isFastPass = 11;
 }
 
 message IKnowledgeBaseItem {
