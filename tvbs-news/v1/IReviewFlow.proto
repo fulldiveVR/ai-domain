@@ -14,7 +14,8 @@ message IReviewFlow {
   repeated IReviewFlowAiRequest aiRequests = 7;
   ReviewFlowStatus status = 8;
   google.protobuf.Timestamp created = 9;
-  bool isFastPass = 10;
+  google.protobuf.Timestamp updated = 10;
+  bool isFastPass = 11;
 }
 
 message IKnowledgeBaseItem {
@@ -76,4 +77,19 @@ message IReviewFlowAiRequest {
   optional IAiRequestFromSeanews flowFromSeanews = 5;
   optional IAiRequestFromAutopilot flowFromAutopilot = 6;
   optional bool isNeeded = 7;
+}
+
+enum ReviewFlowAiRequestParameter {
+  originalContent = 0;
+  originalTitle = 1;
+  outlineContent = 2;
+  factContent = 3;
+  createdContent = 4;
+  createdTitle = 5;
+  selectedKeywords = 6;
+  imageUrl = 7;
+  wordCount = 8;
+  seoKeywords = 9;
+  imageAiGenerationType = 10;
+  currentDay = 11;
 }
