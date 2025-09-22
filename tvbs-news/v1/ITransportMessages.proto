@@ -66,5 +66,5 @@ message YoutubeVideoFetcherRequestMessage {
 }
 
 message YoutubeVideoFetcherResponseMessage {
-  string videoUrl = 1;
+  string mp3Base64 = 1;
 }
