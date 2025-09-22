@@ -51,10 +51,31 @@ enum ITeamRoleType {
 message IProvider {
   optional IProviderData email = 1;
   optional IProviderData visitor = 2;
+  optional IGoogleProviderData google = 3;
 }
 
 message IProviderData {
   string id = 1;
+}
+
+message IGoogleProviderData {
+  string id = 1; // User email
+  string sub = 2; // Google sub (subject identifier)
+  string email = 3;
+  string name = 4;
+  optional string given_name = 5;
+  optional string family_name = 6;
+  optional string picture = 7;
+  optional string locale = 8;
+  optional bool email_verified = 9;
+  optional string hd = 10; // hosted domain for G Suite accounts
+  optional string aud = 11; // audience
+  optional string iss = 12; // issuer
+  optional int64 iat = 13; // issued at
+  optional int64 exp = 14; // expiration time
+  optional string azp = 15; // authorized party
+  optional int64 nbf = 16; // not before time
+  optional string jti = 17; // JWT ID
 }
 
 enum IUserRole {
