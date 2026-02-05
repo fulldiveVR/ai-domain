@@ -33,7 +33,8 @@ message IAiModelPrice {
     google.protobuf.DoubleValue image = 3;
     google.protobuf.DoubleValue request = 4;
     google.protobuf.DoubleValue image_output = 5;
-    Unit unit = 6;
+    google.protobuf.DoubleValue internal_reasoning = 6;
+    Unit unit = 7;
 }
 
 enum Provider {
